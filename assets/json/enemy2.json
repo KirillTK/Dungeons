@@ -1,0 +1,7 @@
+{
+  "health" : 100,
+  "pathCharacter": "./assets/enemy/enemy2/golem.gif",
+  "pathAttack": "./assets/enemy/enemy2/golem-attack.gif",
+  "pathDeath": "./assets/enemy/enemy2/golem-death.gif",
+  "pathHeat": "./assets/enemy/enemy2/golem-hurt.gif"
+}
