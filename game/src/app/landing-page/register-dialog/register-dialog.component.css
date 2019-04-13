@@ -33,9 +33,26 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 280px;
+    height: 400px;
+    width: 100%;
 }
 
 .btn {
     margin-top: 30px;
+}
+
+.select_hero {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.select_options {
+    padding-top: 30px;
 }

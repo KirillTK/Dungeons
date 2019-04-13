@@ -35,3 +35,7 @@
     width: 500px;
     white-space: normal;
 }
+
+.mat-radio-label-content {
+    width: 100% !important;
+}

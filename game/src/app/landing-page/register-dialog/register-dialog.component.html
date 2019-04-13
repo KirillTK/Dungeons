@@ -16,8 +16,32 @@
           Max length <strong>13</strong>
         </mat-error>
       </mat-form-field>
+
+
+      <div class="select_options">
+        <mat-radio-group aria-label="Select character" [formControl]="characterControl">
+
+          <div class="select_hero">
+            <mat-radio-button [value]="{selectedCharacter: character, index: i}" *ngFor="let character of characterInfo; let i = index">
+              <div class="character">
+                <h2>{{character.name}}</h2>
+                <img [src]="character.imgPath" [alt]="character.name">
+              </div>
+            </mat-radio-button>
+          </div>
+
+        </mat-radio-group>
+      </div>
+
+
+
       <div mat-dialog-actions class="btn">
-        <button type="submit" mat-raised-button color="warn" [mat-dialog-close]="nickName"  [disabled]="nickNameFormControl.invalid" >Ok</button>
+        <button type="submit" mat-raised-button color="warn" [mat-dialog-close]="{
+        nickName: this.nickName,
+        selectedHero: this.characterControl.value
+      }"
+                [disabled]="nickNameFormControl.invalid || characterControl.invalid">Ok
+        </button>
       </div>
     </form>
   </div>
