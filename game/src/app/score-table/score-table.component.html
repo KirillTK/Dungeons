@@ -1,0 +1,18 @@
+<div *ngIf="isLoaded">
+
+  <section class="scoreboard-area">
+
+    <div class="score-table">
+      <div class="row"><span>name</span> <span>score</span></div>
+      <ul>
+        <li *ngFor="let player of players | paginate: { itemsPerPage: 10, currentPage: p }"><span class="nickName">{{player.name}}</span>
+          <span class="nickName">{{player.score}}</span></li>
+      </ul>
+    </div>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </section>
+
+
+</div>
+

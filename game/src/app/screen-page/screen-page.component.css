@@ -1,0 +1,22 @@
+.menu {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100vh;
+    background: url('/assets/screen_background.jpg') no-repeat;
+    background-size: cover;
+}
+
+.slideshow {
+    position: relative;
+    bottom: 33%;
+    left: 8%;
+    width: 900px;
+}
+
+.back-btn {
+    position: relative;
+    right: 42%;
+    bottom: 20%;
+    width: 300px;
+}

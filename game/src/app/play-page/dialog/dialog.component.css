@@ -1,0 +1,22 @@
+.lose-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    width: 642px;
+    height: 742px;
+    background: url('/assets/scroll.png') no-repeat;
+    box-shadow: none;
+    overflow: hidden;
+    color: white;
+}
+
+.lose-dialog > h1,div {
+    text-align: center;
+}
+
+h1, .statistics {
+    font-size: 1.8em;
+    font-family: DwarvenAxe, serif;
+}
+

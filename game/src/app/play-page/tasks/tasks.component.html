@@ -1,0 +1,84 @@
+<div class="task-dialog" (keydown.enter)="close()">
+
+  <div class="table-tasks" *ngIf="typeTask === ''">
+    <div class="button-task-container" (click)="onMathTask()">
+      <button class="button math_task"></button>
+      <span class="name-task">Math</span></div>
+
+
+    <div class="button-task-container" (click)="onEngToRusTask()">
+      <button class="button engToRus"></button>
+      <span class="name-task">Eng to Rus</span></div>
+
+
+    <div class="button-task-container" (click)="onRusToEngTask()">
+      <button class="button rusToEng"></button>
+      <span class="name-task">Rus to Eng</span></div>
+
+
+    <div class="button-task-container" (click)="onCompare()">
+      <button class="button compare"></button>
+      <span class="name-task">Compare</span></div>
+
+
+    <div class="button-task-container" (click)="onQuiz()">
+      <button class="button quiz"></button>
+      <span class="name-task">Quiz</span></div>
+
+    <div class="button-task-container" (click)="onRightOrder()">
+      <button class="button drag"></button>
+      <span class="name-task">Right order</span></div>
+
+  </div>
+
+
+  <div class="task" *ngIf="typeTask === 'math'">
+    <span class="expression">{{task.expression}}</span>
+    <label>
+      <input type="text" [(ngModel)]="answer" autofocus/>
+    </label>
+    <button mat-raised-button color="warn" type="submit" [mat-dialog-close]="getResult(answer)">Ok</button>
+  </div>
+
+
+  <div class="task" *ngIf="typeTask === 'translate'">
+    <span class="expression">{{task.expression}}</span>
+    <label>
+      <input type="text" [(ngModel)]="answer" autofocus/>
+    </label>
+    <button mat-raised-button color="warn" [mat-dialog-close]="getResult(answer)">Ok</button>
+  </div>
+
+
+  <div class="task" *ngIf="typeTask === 'compare'">
+    <span class="expression">{{task.expression}}</span>
+    <label>
+      <input type="text" [(ngModel)]="answer" autofocus/>
+    </label>
+    <button mat-raised-button color="warn" [mat-dialog-close]="getResult(answer)">Ok</button>
+  </div>
+
+
+  <div class="quiz-are" *ngIf="typeTask === 'quiz'">
+    <span class="expression quiz-task">{{quizTask.expression}}</span>
+    <mat-radio-group [(ngModel)]="answer">
+      <mat-radio-button [value]="[option]" *ngFor="let option of quizTask.answerChoices" class="quiz-task"
+                        appFocusDirective>{{option}}
+      </mat-radio-button>
+      <button mat-raised-button color="warn" [mat-dialog-close]="getResultQuizTask(answer)">Ok</button>
+    </mat-radio-group>
+  </div>
+
+  <div class="task" *ngIf="typeTask === 'order'">
+    <span class="expression">{{task.expression}}</span>
+
+
+    <div cdkDropList cdkDropListOrientation="horizontal" class="letter-list"
+         (cdkDropListDropped)="dropOrderLetter($event)">
+      <div class="letter-box" *ngFor="let letter of dragArray" cdkDrag>{{letter}}</div>
+    </div>
+
+    <button mat-raised-button color="warn" [mat-dialog-close]="getDragResult()">Ok</button>
+  </div>
+
+</div>

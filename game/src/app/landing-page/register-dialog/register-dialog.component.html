@@ -1,0 +1,24 @@
+<section class="dialog">
+
+  <div class="container">
+    <span class="title">Hello brave adventurer!</span>
+    <form (submit)="submit()">
+      <mat-form-field>
+        <input matInput placeholder="Nickname" [formControl]="nickNameFormControl"
+               [errorStateMatcher]="matcher" [(ngModel)]="nickName" maxlength="13">
+        <mat-error *ngIf="nickNameFormControl.hasError('required')">
+          Nickname is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="nickNameFormControl.hasError('minlength')">
+          Min length <strong>3</strong>
+        </mat-error>
+        <mat-error *ngIf="nickNameFormControl.hasError('maxlength')">
+          Max length <strong>13</strong>
+        </mat-error>
+      </mat-form-field>
+      <div mat-dialog-actions class="btn">
+        <button type="submit" mat-raised-button color="warn" [mat-dialog-close]="nickName"  [disabled]="nickNameFormControl.invalid" >Ok</button>
+      </div>
+    </form>
+  </div>
+</section>

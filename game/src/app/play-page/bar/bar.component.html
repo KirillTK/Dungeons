@@ -1,0 +1,35 @@
+<section class="health-bar">
+
+  <div class="bar">
+    <div class="health-bar">
+      <img src="assets/health-bar/hp.png" class="hp" #heroHP>
+    </div>
+
+    <section class="character-information">
+      <div class="nick-name">
+        <span #heroName></span>
+      </div>
+      <span #heroHealth></span>
+    </section>
+  </div>
+
+
+  <div class="score"><span>{{score}}</span></div>
+
+
+  <div class="bar">
+    <div class="health-bar">
+      <img src="assets/health-bar/hp.png" class="hp" #enemyHP>
+    </div>
+
+    <section class="character-information">
+      <div class="nick-name enemy-nickname">
+        <span #enemyName></span>
+      </div>
+      <span #enemyHealth></span>
+    </section>
+
+  </div>
+
+  <!--<button (click)="reduceHP()">reduce</button>-->
+</section>

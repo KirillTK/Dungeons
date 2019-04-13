@@ -1,0 +1,17 @@
+<section class="lose-dialog" (keydown.enter)="close()">
+
+  <h1 mat-dialog-title>You Lose (</h1>
+  <div mat-dialog-content class="statistics">
+    <p>Statistics : your score {{data.result}} and you won {{data.countEnemies}} enemies</p>
+  </div>
+
+  <app-score-table></app-score-table>
+
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" [mat-dialog-close]="">Ok</button>
+  </div>
+
+</section>
+
+

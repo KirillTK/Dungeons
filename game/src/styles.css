@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@font-face {
+    font-family: DwarvenAxe;
+    src: url("/assets/fonts/DwarvenAxe.ttf") format("truetype");
+}
+
+* {
+    margin: 0 auto;
+    cursor: url('/assets/arrow.png'), auto;
+}
+
+.dialog .mat-dialog-container {
+    padding: 0;
+    background: transparent;
+}
+
+
+.lose-dialog .mat-dialog-container {
+    padding: 0;
+    background: transparent;
+}
+
+.ngx-pagination {
+    padding-inline-start: 0;
+}
+
+.task-dialog .mat-dialog-container {
+    padding: 0;
+    background: transparent;
+}
+
+.mat-radio-label-content {
+    width: 500px;
+    white-space: normal;
+}

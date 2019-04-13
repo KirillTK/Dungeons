@@ -1,0 +1,23 @@
+.music {
+
+}
+
+.music-on {
+    position: absolute;
+    top: 30%;
+    left: 3%;
+    width: 80px;
+    height: 80px;
+    background: url("/assets/sounds/interface/sound_on.png") no-repeat;
+    background-size: 100%;
+}
+
+.music-off {
+    position: absolute;
+    top: 30%;
+    left: 3%;
+    width: 80px;
+    height: 80px;
+    background: url("/assets/sounds/interface/sound_off.png") no-repeat;
+    background-size: 100%;
+}
