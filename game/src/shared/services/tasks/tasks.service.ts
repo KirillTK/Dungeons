@@ -46,7 +46,6 @@ export class TasksService {
   }
 
   getQuizTask(): QuizTask{
-    console.log(quiz[_.random(quiz.length-1)]);
     return quiz[_.random(quiz.length-1)];
   }
 

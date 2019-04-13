@@ -97,8 +97,9 @@ export class TasksComponent implements OnInit {
 
 
   getResultQuizTask(answer: string[]) {
-    console.log('parse', this.parseResult('answer[0]' === this.quizTask.result, this.quizTask));
-    return this.parseResult(answer[0] === this.quizTask.result, this.quizTask);
+    if (answer){
+      return this.parseResult(answer[0] === this.quizTask.result, this.quizTask);
+    }
   }
 
   getResult(answer: string) {

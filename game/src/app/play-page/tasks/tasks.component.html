@@ -77,8 +77,8 @@
       <mat-radio-button [value]="[option]" *ngFor="let option of quizTask.answerChoices" class="quiz-task"
                         appFocusDirective>{{option}}
       </mat-radio-button>
-      <button mat-raised-button color="warn" [mat-dialog-close]="getResultQuizTask(answer)">Ok</button>
     </mat-radio-group>
+    <button mat-raised-button color="warn" [mat-dialog-close]="getResultQuizTask()" style="margin-top: 20px">Ok</button>
   </div>
 
   <div class="task" *ngIf="typeTask === 'order'">
