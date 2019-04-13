@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatPaginatorModule, MatRadioModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatRadioModule,
   MatTableModule
 } from '@angular/material';
 import {DragDropModule} from "@angular/cdk/drag-drop";
@@ -13,7 +19,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule
   ],
   exports: [
     MatDialogModule,
@@ -22,7 +29,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule
   ]
 })
 export class MaterialModule { }

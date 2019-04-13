@@ -16,7 +16,9 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    margin-top: 90px;
+    /*margin-top: 90px;*/
+    padding-top: 90px;
+    padding-left: 52px;
 }
 
 .name-task {
@@ -170,4 +172,15 @@
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
+.task_btn {
+    width: 87%;
+    height: 75px;
+    font-size: 1.3em;
+}
 
+
+.hide_btn {
+    position: relative;
+    bottom: 37%;
+    right: 20px;
+}

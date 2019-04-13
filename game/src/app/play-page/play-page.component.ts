@@ -114,7 +114,9 @@ export class PlayPageComponent implements OnInit {
     Promise.resolve().then(() => {
       this.taskDialogRef = this.taskDialog.open(TasksComponent, {disableClose: true, panelClass: 'task-dialog'});
       this.taskDialogRef.afterClosed().subscribe(result => {
-        this.getAnswer(result);
+        if (result) {
+          this.getAnswer(result);
+        }
       });
     });
 
