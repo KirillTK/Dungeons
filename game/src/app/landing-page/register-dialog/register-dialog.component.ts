@@ -1,7 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ErrorStateMatcher, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {KeyControl} from '../../../shared/model/KeyControl';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -15,16 +14,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
-export class RegisterDialogComponent {
+export class RegisterDialogComponent implements OnInit {
+
+  characterInfo = [
+    {name: 'archer', description: 'blah-blah-blah', imgPath:'assets/presentation_character/archer.png'},
+    {name: 'knight', description: 'blah2-blah2-blah2', imgPath:'assets/presentation_character/knight.png'},
+    {name: 'wizzard', description: 'blah3-blah3-blah3', imgPath:'assets/presentation_character/wizzard.png'}
+  ];
 
 
-  public nickName: string;
-  public keyControl = KeyControl;
+  nickName: string;
 
   nickNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(13),
+  ]);
+
+  characterControl = new FormControl('', [
+    Validators.required
   ]);
 
   matcher = new MyErrorStateMatcher();
@@ -35,9 +43,12 @@ export class RegisterDialogComponent {
   }
 
   submit(): void {
-    if (this.nickNameFormControl.valid){
+    if (this.nickNameFormControl.valid) {
       this.dialogRef.close(this.nickName);
     }
+  }
+
+  ngOnInit(): void {
   }
 
 }
