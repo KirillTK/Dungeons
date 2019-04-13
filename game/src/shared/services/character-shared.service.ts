@@ -46,4 +46,8 @@ export class CharacterSharedService {
   }
 
 
+  saveHeroInfo(information){
+    window.localStorage.setItem('userInfo', JSON.stringify(information));
+  }
+
 }

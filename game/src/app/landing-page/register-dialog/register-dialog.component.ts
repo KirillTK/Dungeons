@@ -17,9 +17,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class RegisterDialogComponent implements OnInit {
 
   characterInfo = [
-    {name: 'archer', description: 'blah-blah-blah', imgPath:'assets/presentation_character/archer.png'},
-    {name: 'knight', description: 'blah2-blah2-blah2', imgPath:'assets/presentation_character/knight.png'},
-    {name: 'wizzard', description: 'blah3-blah3-blah3', imgPath:'assets/presentation_character/wizzard.png'}
+    {name: 'archer', description: 'blah-blah-blah', imgPath: 'assets/presentation_character/archer.png'},
+    {name: 'knight', description: 'blah2-blah2-blah2', imgPath: 'assets/presentation_character/knight.png'},
+    {name: 'wizzard', description: 'blah3-blah3-blah3', imgPath: 'assets/presentation_character/wizzard.png'}
   ];
 
 
@@ -43,8 +43,11 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.nickNameFormControl.valid) {
-      this.dialogRef.close(this.nickName);
+    if (this.nickNameFormControl.valid && this.characterControl.valid) {
+      this.dialogRef.close({
+        nickName: this.nickName,
+        selectedHero: this.characterControl.value
+      });
     }
   }
 

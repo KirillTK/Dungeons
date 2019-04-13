@@ -43,9 +43,10 @@ export class LandingComponent implements OnInit{
       panelClass: 'dialog'
     });
 
-    dialogRef.afterClosed().subscribe(nickName => {
-      if (nickName !== '') {
-        this.sharedCharacterService.setHeroName(nickName);
+    dialogRef.afterClosed().subscribe(userInfo => {
+      if (userInfo) {
+        this.sharedCharacterService.setHeroName(userInfo.nickName);
+        this.sharedCharacterService.saveHeroInfo(userInfo);
         this.route.navigate(['play']).catch(error => error);
       }
     });
