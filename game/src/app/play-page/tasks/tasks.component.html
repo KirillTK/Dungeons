@@ -73,7 +73,8 @@
 
   <div class="quiz-are" *ngIf="typeTask === 'quiz'">
     <span class="expression quiz-task">{{quizTask.expression}}</span>
-    <mat-radio-group [(ngModel)]="answer">
+
+    <mat-radio-group [formControl]="quizControl">
       <mat-radio-button [value]="[option]" *ngFor="let option of quizTask.answerChoices" class="quiz-task"
                         appFocusDirective>{{option}}
       </mat-radio-button>
