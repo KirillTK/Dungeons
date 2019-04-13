@@ -129,4 +129,8 @@ export class TasksComponent implements OnInit {
     moveItemInArray(this.dragArray, event.previousIndex, event.currentIndex);
   }
 
+  closeDialog(){
+    this.dialogRef.close();
+  }
+
 }
