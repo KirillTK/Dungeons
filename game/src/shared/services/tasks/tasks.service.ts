@@ -6,6 +6,7 @@ import {rusToEng} from '../../model/rusToEng';
 import {quiz} from "../../model/Quiz";
 import {QuizTask} from "../../model/QuizModel";
 import {dragOrder} from "../../model/DragOrder";
+import {DAMAGE} from "../../model/Damage";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class TasksService {
     const expressionIndex = _.random(this.mathExpression.length - 1);
     const expression = firstNumber + this.mathExpression[expressionIndex] + secondNumber;
     const result = eval(expression) + '';
-    return {expression: expression, result: result};
+    return {expression: expression, result: result, damage: DAMAGE.MATH_TASK};
   }
 
   getEngToRusTast(): Task {
@@ -41,10 +42,11 @@ export class TasksService {
     const secondNumber = _.random(30);
     const expression  = firstNumber + ' ? '+ secondNumber;
     const result = this.getAnswerCompareTask(firstNumber,secondNumber);
-    return {expression: expression, result: result};
+    return {expression: expression, result: result, damage: DAMAGE.COMPARE_TASK};
   }
 
   getQuizTask(): QuizTask{
+    console.log(quiz[_.random(quiz.length-1)]);
     return quiz[_.random(quiz.length-1)];
   }
 

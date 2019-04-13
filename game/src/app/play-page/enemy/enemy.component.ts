@@ -47,7 +47,7 @@ export class EnemyComponent implements OnInit, OnChanges {
 
     if (changes.hasOwnProperty('isHeroAttackEnd')){
        if (changes.isHeroAttackEnd.currentValue === true){
-         this.reduceHealth(DAMAGE);
+         this.reduceHealth(25);
        }
     }
 

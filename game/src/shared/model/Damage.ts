@@ -1,1 +1,8 @@
-export const DAMAGE = 25;
+export const DAMAGE =  {
+  MATH_TASK : 25,
+  ENG_TO_RUS_TASK: 30,
+  RUS_TO_ENG_TASK: 30,
+  COMPARE_TASK: 25,
+  QUIZ_TASK: 40,
+  ORDER_TASK: 30
+};

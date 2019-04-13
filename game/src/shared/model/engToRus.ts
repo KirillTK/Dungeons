@@ -1,87 +1,109 @@
 import {Task} from './Task';
+import {DAMAGE} from "./Damage";
 
 export const engToRus: Task[] = [
   {
     expression: 'cat',
-    result: 'кот'
+    result: 'кот',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'dog',
-    result: 'собака'
+    result: 'собака',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'air',
-    result: 'воздух'
+    result: 'воздух',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'animal',
-    result: 'животное'
+    result: 'животное',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'area',
-    result: 'область'
+    result: 'область',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'bird',
-    result: 'птица'
+    result: 'птица',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'body',
-    result: 'тело'
+    result: 'тело',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'book',
-    result: 'книга'
+    result: 'книга',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'boy',
-    result: 'мальчик'
+    result: 'мальчик',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'example',
-    result: 'пример'
+    result: 'пример',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'girl',
-    result: 'девочка'
+    result: 'девочка',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   }, {
     expression: 'home',
-    result: 'дом'
+    result: 'дом',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'king',
-    result: 'король'
+    result: 'король',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'money',
-    result: 'деньги'
+    result: 'деньги',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'problem',
-    result: 'проблема'
+    result: 'проблема',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'product',
-    result: 'продукт'
+    result: 'продукт',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'tree',
-    result: 'дерево'
+    result: 'дерево',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'year',
-    result: 'год'
+    result: 'год',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'world',
-    result: 'мир'
+    result: 'мир',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'wood',
-    result: 'лес'
+    result: 'лес',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
     expression: 'class',
-    result: 'класс'
+    result: 'класс',
+    damage: DAMAGE.ENG_TO_RUS_TASK
   }
 ];

@@ -30,12 +30,6 @@ export class HeroComponent implements OnInit, OnChanges {
       this.characterSharedService.setHeroHealth(this.hero.health);
       this.heroElement.nativeElement.src = this.hero.pathCharacter;
     });
-    // this.character.getCharacterData(Path.HERO_PATH)
-    //   .then((character: Character) => {
-    //     this.hero = character;
-    //     this.characterSharedService.setHeroHealth(this.hero.health);
-    //     this.heroElement.nativeElement.src = this.hero.pathCharacter;
-    //   });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,7 +43,7 @@ export class HeroComponent implements OnInit, OnChanges {
 
 
       if (changes.result.currentValue.result === 'Incorrect') {
-        this.reduceHealth(DAMAGE);
+        this.reduceHealth(25);
       }
 
     }
