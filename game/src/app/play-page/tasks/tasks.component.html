@@ -1,33 +1,45 @@
 <div class="task-dialog" (keydown.enter)="close()">
 
   <div class="table-tasks" *ngIf="typeTask === ''">
-    <div class="button-task-container" (click)="onMathTask()">
-      <button class="button math_task"></button>
-      <span class="name-task">Math</span></div>
+    <!--<div class="button-task-container" (click)="onMathTask()">-->
+      <!--<button class="button math_task"></button>-->
+      <!--<span class="name-task">Math</span></div>-->
+    <button mat-raised-button color="warn" (click)="onMathTask()" class="task_btn">Math</button>
 
 
-    <div class="button-task-container" (click)="onEngToRusTask()">
-      <button class="button engToRus"></button>
-      <span class="name-task">Eng to Rus</span></div>
+    <!--<div class="button-task-container" (click)="onEngToRusTask()">-->
+      <!--<button class="button engToRus"></button>-->
+      <!--<span class="name-task">Eng to Rus</span></div>-->
+
+    <button mat-raised-button  class="task_btn" (click)="onEngToRusTask()">Eng to Rus</button>
 
 
-    <div class="button-task-container" (click)="onRusToEngTask()">
-      <button class="button rusToEng"></button>
-      <span class="name-task">Rus to Eng</span></div>
+
+    <!--<div class="button-task-container" (click)="onRusToEngTask()">-->
+      <!--<button class="button rusToEng"></button>-->
+      <!--<span class="name-task">Rus to Eng</span></div>-->
+
+    <button mat-raised-button color="warn" (click)="onRusToEngTask()" class="task_btn">Rus to Eng</button>
 
 
-    <div class="button-task-container" (click)="onCompare()">
-      <button class="button compare"></button>
-      <span class="name-task">Compare</span></div>
+    <!--<div class="button-task-container" (click)="onCompare()">-->
+      <!--<button class="button compare"></button>-->
+      <!--<span class="name-task">Compare</span></div>-->
+
+    <button mat-raised-button  class="task_btn" (click)="onCompare()">Compare</button>
 
 
-    <div class="button-task-container" (click)="onQuiz()">
-      <button class="button quiz"></button>
-      <span class="name-task">Quiz</span></div>
+    <!--<div class="button-task-container" (click)="onQuiz()">-->
+      <!--<button class="button quiz"></button>-->
+      <!--<span class="name-task">Quiz</span></div>-->
 
-    <div class="button-task-container" (click)="onRightOrder()">
-      <button class="button drag"></button>
-      <span class="name-task">Right order</span></div>
+    <button mat-raised-button color="warn" (click)="onQuiz()" class="task_btn">Quiz</button>
+
+    <!--<div class="button-task-container" (click)="onRightOrder()">-->
+      <!--<button class="button drag"></button>-->
+      <!--<span class="name-task">Right order</span></div>-->
+
+    <button mat-raised-button  class="task_btn" (click)="onRightOrder()">Right order</button>
 
   </div>
 
