@@ -6,6 +6,8 @@ import {ScoreboardService} from '../../shared/services/scoreboard/scoreboard.ser
 import {TasksComponent} from './tasks/tasks.component';
 import {CharacterSharedService} from '../../shared/services/character-shared.service';
 import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref';
+import {FightService} from "../../shared/services/fight.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-play-page',
@@ -22,6 +24,8 @@ export class PlayPageComponent implements OnInit {
   public isEnemyAttackEnd: boolean;
   private amoutOfEnemies = 0;
   private taskDialogRef: MatDialogRef<any>;
+  finishHeroAnimation$: Observable<any>;
+  finishEnemyAnimation$: Observable<any>;
 
   @ViewChild('hero') hero: ElementRef;
   @Output() isContinue = new EventEmitter<boolean>();
@@ -31,11 +35,21 @@ export class PlayPageComponent implements OnInit {
               private parent: ViewContainerRef,
               private scoreboard: ScoreboardService,
               private characterSharedService: CharacterSharedService,
-              public taskDialog: MatDialog) {
+              public taskDialog: MatDialog,
+              private fight: FightService
+  ) {
   }
 
   ngOnInit() {
     this.openTaskDialog();
+
+    this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
+    this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
+
+    this.finishHeroAnimation$.subscribe(() => this.openTaskDialog());
+
+    this.finishEnemyAnimation$.subscribe(() => this.openTaskDialog());
+
   }
 
   getAnswer(answer) {
@@ -115,6 +129,8 @@ export class PlayPageComponent implements OnInit {
       this.taskDialogRef = this.taskDialog.open(TasksComponent, {disableClose: true, panelClass: 'task-dialog'});
       this.taskDialogRef.afterClosed().subscribe(result => {
         if (result) {
+          console.log('result', result);
+          this.fight.setGameResult(result);
           this.getAnswer(result);
         }
       });

@@ -1,10 +1,22 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {CharacterService} from '../../../shared/services/character/character.service';
 import {Path} from '../../../shared/model/Path';
 import {Character} from '../../../shared/model/character';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
 import {SoundService} from '../../../shared/services/sound/sound.service';
 import {DAMAGE} from '../../../shared/model/Damage';
+import {Observable} from "rxjs";
+import {FightService} from "../../../shared/services/fight.service";
 
 @Component({
   selector: 'app-hero',
@@ -21,7 +33,11 @@ export class HeroComponent implements OnInit, OnChanges {
   @Output() isFinishAnimationAttack = new EventEmitter<any>();
   @Input() isEnemyAttackEnd: boolean;
 
-  constructor(private character: CharacterService, private characterSharedService: CharacterSharedService, private soundSpell: SoundService) {
+  fight$: Observable<any>;
+  finishEnemyAnimation$: Observable<any>;
+  damageSpell: number;
+
+  constructor(private character: CharacterService, private characterSharedService: CharacterSharedService, private soundSpell: SoundService, private fight: FightService) {
   }
 
   ngOnInit() {
@@ -30,26 +46,43 @@ export class HeroComponent implements OnInit, OnChanges {
       this.characterSharedService.setHeroHealth(this.hero.health);
       this.heroElement.nativeElement.src = this.hero.pathCharacter;
     });
+
+    this.fight$ = this.fight.gameResult;
+    this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
+
+    this.fight$.subscribe((result) => {
+
+      this.damageSpell = result.damage;
+
+      if (result.result === 'Correct') {
+        const spellSound = result.castSound;
+        this.castPath = result.castPath;
+        this.attack(spellSound);
+      }
+
+    });
+
+    this.finishEnemyAnimation$.subscribe( ()=>{
+      this.reduceHealth(this.damageSpell);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined') {
-      if (changes.result.currentValue.result === 'Correct') {
-        const spellSound = changes.result.currentValue.castSound;
-        this.castPath = changes.result.currentValue.castPath;
-        this.attack(spellSound);
-      }
+    // if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined') {
+    //   if (changes.result.currentValue.result === 'Correct') {
+    //     const spellSound = changes.result.currentValue.castSound;
+    //     this.castPath = changes.result.currentValue.castPath;
+    //     this.attack(spellSound);
+    //   }
+    //
+    //
+    //   if (changes.result.currentValue.result === 'Incorrect') {
+    //     this.reduceHealth(25);
+    //   }
+    //
+    // }
 
-
-      if (changes.result.currentValue.result === 'Incorrect') {
-        this.reduceHealth(25);
-      }
-
-    }
-
-
-    this.isEnemyAttackEnd = false;
   }
 
   attack(spellSound: string) {
@@ -72,7 +105,7 @@ export class HeroComponent implements OnInit, OnChanges {
   }
 
   reduceHealth(amountHealth) {
-    if (this.hero.health - amountHealth === 0) {
+    if (this.hero.health - amountHealth <= 0) {
       this.die();
       this.gameResult.emit('lose');
       this.isFinishAnimationAttack.emit(false);
@@ -101,7 +134,8 @@ export class HeroComponent implements OnInit, OnChanges {
         this.soundSpell.stopSpellSound();
         spell.removeChild(spellEffect);
         clearInterval(time);
-        this.isFinishAnimationAttack.emit(true);
+        this.fight.setFinishHeroAnimation(true);
+        // this.isFinishAnimationAttack.emit(true);
       }
 
       spellEffect.style.marginLeft = margin + 'px';

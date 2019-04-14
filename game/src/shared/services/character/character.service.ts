@@ -41,9 +41,7 @@ export class CharacterService {
   async getUserCharacter() {
     const userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
     this.sharedService.setHeroName(userInfo.nickName);
-    const result = await fetch(Path.HERO_PATH[userInfo.selectedHero.index]).then(response => response.json());
-    console.log(userInfo,result );
-    return result;
+    return await fetch(Path.HERO_PATH[userInfo.selectedHero.index]).then(response => response.json());
   }
 
 }

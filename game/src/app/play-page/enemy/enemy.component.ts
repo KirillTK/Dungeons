@@ -4,6 +4,8 @@ import {Path} from '../../../shared/model/Path';
 import {CharacterService} from '../../../shared/services/character/character.service';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
 import {DAMAGE} from '../../../shared/model/Damage';
+import {FightService} from "../../../shared/services/fight.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-enemy',
@@ -21,8 +23,12 @@ export class EnemyComponent implements OnInit, OnChanges {
   @Output() isFinishAnimationAttack = new EventEmitter<boolean>();
   @ViewChild('enemy') enemyElement: ElementRef;
 
+  fight$: Observable<any>;
+  finishHeroAnimation$: Observable<any>;
+  damageSpell: number;
 
-  constructor(private character: CharacterService, private characterSharedService: CharacterSharedService) {
+
+  constructor(private character: CharacterService, private characterSharedService: CharacterSharedService, private fight: FightService) {
   }
 
   ngOnInit() {
@@ -34,23 +40,40 @@ export class EnemyComponent implements OnInit, OnChanges {
         this.characterSharedService.setEnemyHealth(this.enemy.health);
         this.setState();
       });
+
+    this.fight$ = this.fight.gameResult;
+    this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
+
+    this.fight$.subscribe( (result)=>{
+
+      this.damageSpell = result.damage;
+
+      if (result.result === 'Incorrect'){
+        this.attack();
+      }
+    });
+
+    this.finishHeroAnimation$.subscribe( ()=>{
+      this.reduceHealth(this.damageSpell);
+    })
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
-
-    if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined'){
-      if (changes.result.currentValue.result === 'Incorrect'){
-        this.attack();
-      }
-    }
-
-    if (changes.hasOwnProperty('isHeroAttackEnd')){
-       if (changes.isHeroAttackEnd.currentValue === true){
-         this.reduceHealth(25);
-       }
-    }
-
+    //
+    // if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined'){
+    //   if (changes.result.currentValue.result === 'Incorrect'){
+    //     this.attack();
+    //   }
+    // }
+    //
+    // if (changes.hasOwnProperty('isHeroAttackEnd')){
+    //    if (changes.isHeroAttackEnd.currentValue === true){
+    //      this.reduceHealth(25);
+    //    }
+    // }
+    //
     if (changes.hasOwnProperty('refreshSession')){
       if (changes.refreshSession.currentValue !== changes.refreshSession.previousValue){
         this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
@@ -63,7 +86,6 @@ export class EnemyComponent implements OnInit, OnChanges {
       }
     }
 
-    this.isHeroAttackEnd = false;
   }
 
   attack() {
@@ -71,7 +93,8 @@ export class EnemyComponent implements OnInit, OnChanges {
     setTimeout(() => {
       const healthHero = this.characterSharedService.getHeroHealth();
       if (healthHero !== 0){
-        this.isFinishAnimationAttack.emit(true);
+        this.fight.setFinishEnemyAnimation(true);
+        // this.isFinishAnimationAttack.emit(true);
       }
       this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
     }, 1000);
@@ -89,7 +112,7 @@ export class EnemyComponent implements OnInit, OnChanges {
   }
 
   reduceHealth(amountHealth) {
-    if (this.enemy.health - amountHealth === 0) {
+    if (this.enemy.health - amountHealth <= 0) {
       this.die();
       this.gameResult.emit('win');
     } else {
