@@ -1,86 +1,110 @@
-export const dragOrder = [
+import {Task} from "./Task";
+import {DAMAGE} from "./Damage";
+
+export const dragOrder: Task[] = [
   {
     expression: 'tac',
-    result: 'cat'
+    result: 'cat',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     expression: 'gdo',
-    result: 'dog'
+    result: 'dog',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'air',
-    expression: 'rai'
+    expression: 'rai',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'animal',
-    expression: 'amlian'
+    expression: 'amlian',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'area',
-    expression: 'eara'
+    expression: 'eara',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'bird',
-    expression: 'brid'
+    expression: 'brid',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'body',
-    expression: 'yobd'
+    expression: 'yobd',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'book',
-    expression: 'koob'
+    expression: 'koob',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'boy',
-    expression: 'yob'
+    expression: 'yob',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'example',
-    expression: 'leexamp'
+    expression: 'leexamp',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'girl',
-    expression: 'irlg'
+    expression: 'irlg',
+    damage: DAMAGE.ORDER_TASK
   }, {
     result: 'home',
-    expression: 'meho'
+    expression: 'meho',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'king',
-    expression: 'nigk'
+    expression: 'nigk',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'money',
-    expression: 'nemoy'
+    expression: 'nemoy',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'problem',
-    expression: 'blempro'
+    expression: 'blempro',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'product',
-    expression: 'ducprot'
+    expression: 'ducprot',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'tree',
-    expression: 'eret'
+    expression: 'eret',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'year',
-    expression: 'aery'
+    expression: 'aery',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'world',
-    expression: 'rldwo'
+    expression: 'rldwo',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'wood',
-    expression: 'doow'
+    expression: 'doow',
+    damage: DAMAGE.ORDER_TASK
   },
   {
     result: 'class',
-    expression: 'ssalc'
+    expression: 'ssalc',
+    damage: DAMAGE.ORDER_TASK
   }
 
 ];

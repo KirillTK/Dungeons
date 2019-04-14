@@ -5,6 +5,7 @@ import {KeyControl} from '../../../shared/model/KeyControl';
 import {MatDialogRef} from '@angular/material';
 import {QuizTask} from "../../../shared/model/QuizModel";
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-tasks',
@@ -21,6 +22,8 @@ export class TasksComponent implements OnInit {
   @Output() result = new EventEmitter<string>();
   public keyControl = KeyControl;
   public dragArray: string[];
+
+  quizControl = new FormControl(null, [Validators.required]);
 
 
 
@@ -84,6 +87,7 @@ export class TasksComponent implements OnInit {
 
   onQuiz(){
     this.quizTask = this.tasks.getQuizTask();
+    console.log('quiz', this.quizTask);
     this.typeTask = 'quiz';
   }
 
@@ -95,28 +99,28 @@ export class TasksComponent implements OnInit {
   }
 
 
-  getResultQuizTask(answer: string[]) {
-    return answer[0] === this.quizTask.result ? {
-      result: 'Correct',
-      castPath: `./assets/spells/${this.typeTask}.gif`,
-      castSound: `./assets/spells/sound/${this.typeTask}.mp3`
-    } : {result: 'Incorrect'};
+  getResultQuizTask() {
+    const answer = this.quizControl.value;
+    if (answer){
+      return this.parseResult(answer[0] === this.quizTask.result, this.quizTask);
+    }
   }
 
   getResult(answer: string) {
-    return answer.toLowerCase() === this.task.result ? {
-      result: 'Correct',
-      castPath: `./assets/spells/${this.typeTask}.gif`,
-      castSound: `./assets/spells/sound/${this.typeTask}.mp3`
-    } : {result: 'Incorrect'};
+    return this.parseResult(answer.toLowerCase() === this.task.result, this.task);
   }
 
   getDragResult(){
-    return this.dragArray.join('') === this.task.result ? {
+    return this.parseResult(this.dragArray.join('') === this.task.result, this.task);
+  }
+
+  private parseResult(isWinner: boolean, task: Task){
+    return isWinner ?  {
       result: 'Correct',
       castPath: `./assets/spells/${this.typeTask}.gif`,
-      castSound: `./assets/spells/sound/${this.typeTask}.mp3`
-    } : {result: 'Incorrect'};
+      castSound: `./assets/spells/sound/${this.typeTask}.mp3`,
+      damage: task.damage
+    } : {result: 'Incorrect', damage: task.damage};
   }
 
 
