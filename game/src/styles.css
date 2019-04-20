@@ -39,3 +39,9 @@
 .mat-radio-label-content {
     width: 100% !important;
 }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
