@@ -63,7 +63,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
   entryComponents: [
     DialogComponent,
     RegisterDialogComponent,
-    TasksComponent
+    TasksComponent,
+    MusicSettingsComponent
   ]
 })
 export class AppModule {

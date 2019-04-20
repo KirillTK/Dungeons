@@ -9,6 +9,7 @@ import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref';
 import {FightService} from "../../shared/services/fight.service";
 import {Observable} from "rxjs";
 import { ThrowStmt } from '@angular/compiler';
+import { MusicSettingsComponent } from 'src/shared/components/music-settings-dialog/music-settings-dialog.component';
 
 @Component({
   selector: 'app-play-page',
@@ -142,6 +143,13 @@ export class PlayPageComponent implements OnInit {
       });
     });
 
+  }
+
+  openMusicSettingsDialog() {
+    this.dialog.open(MusicSettingsComponent, {
+      height: '400px',
+      width: '600px',
+    });
   }
 
 }
