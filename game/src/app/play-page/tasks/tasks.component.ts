@@ -27,35 +27,35 @@ export class TasksComponent implements OnInit {
 
 
 
-  @HostListener('document:keypress',['$event']) doSmth(event: KeyboardEvent){
+  // @HostListener('document:keypress',['$event']) doSmth(event: KeyboardEvent){
 
-    if (this.typeTask === ''){
-      if (event.keyCode === this.keyControl.DIGIT_ONE) {
-        this.onMathTask();
-      }
+  //   if (this.typeTask === ''){
+  //     if (event.keyCode === this.keyControl.DIGIT_ONE) {
+  //       this.onMathTask();
+  //     }
 
-      if (event.keyCode === this.keyControl.DIGIT_TWO) {
-        this.onEngToRusTask();
-      }
+  //     if (event.keyCode === this.keyControl.DIGIT_TWO) {
+  //       this.onEngToRusTask();
+  //     }
 
-      if (event.keyCode === this.keyControl.DIGIT_THREE) {
-        this.onRusToEngTask();
-      }
+  //     if (event.keyCode === this.keyControl.DIGIT_THREE) {
+  //       this.onRusToEngTask();
+  //     }
 
-      if (event.keyCode === this.keyControl.DIGIT_FOUR) {
-        this.onCompare();
-      }
+  //     if (event.keyCode === this.keyControl.DIGIT_FOUR) {
+  //       this.onCompare();
+  //     }
 
-      if (event.keyCode === this.keyControl.DIGIT_FIVE) {
-        this.onQuiz();
-      }
+  //     if (event.keyCode === this.keyControl.DIGIT_FIVE) {
+  //       this.onQuiz();
+  //     }
 
-      if (event.keyCode === this.keyControl.DIGIT_SIX) {
-        this.onRightOrder();
-      }
-    }
+  //     if (event.keyCode === this.keyControl.DIGIT_SIX) {
+  //       this.onRightOrder();
+  //     }
+  //   }
 
-  }
+  // }
 
   constructor(private tasks: TasksService, public dialogRef: MatDialogRef<TasksComponent>) {
   }
@@ -107,10 +107,12 @@ export class TasksComponent implements OnInit {
   }
 
   getResult(answer: string) {
+    this.showCurrentAnswer();
     return this.parseResult(answer.toLowerCase() === this.task.result, this.task);
   }
 
   getDragResult(){
+    this.showCurrentAnswer();
     return this.parseResult(this.dragArray.join('') === this.task.result, this.task);
   }
 
@@ -135,6 +137,10 @@ export class TasksComponent implements OnInit {
 
   closeDialog(){
     this.dialogRef.close();
+  }
+
+  showCurrentAnswer(){
+    console.log(this.task.result);
   }
 
 }
