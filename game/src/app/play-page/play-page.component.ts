@@ -8,6 +8,7 @@ import {CharacterSharedService} from '../../shared/services/character-shared.ser
 import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref';
 import {FightService} from "../../shared/services/fight.service";
 import {Observable} from "rxjs";
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-play-page',
@@ -27,7 +28,8 @@ export class PlayPageComponent implements OnInit {
   finishHeroAnimation$: Observable<any>;
   finishEnemyAnimation$: Observable<any>;
 
-  @ViewChild('hero') hero: ElementRef;
+  // @ViewChild('hero') hero: ElementRef;
+  @ViewChild('battlefield') battlefield: ElementRef;
   @Output() isContinue = new EventEmitter<boolean>();
 
   constructor(public dialog: MatDialog,
@@ -49,6 +51,10 @@ export class PlayPageComponent implements OnInit {
     this.finishHeroAnimation$.subscribe(() => this.openTaskDialog());
 
     this.finishEnemyAnimation$.subscribe(() => this.openTaskDialog());
+
+    console.log(this.battlefield);
+  
+    this.fight.renderBattlefield(this.battlefield);
 
   }
 
