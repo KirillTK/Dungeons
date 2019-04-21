@@ -1,4 +1,7 @@
+import { MUSIC } from './../../model/Music';
+import { Inject } from '@angular/core';
 import {Injectable} from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +18,17 @@ export class SoundService {
 
   }
 
+  getTheme(){
+    const theme = JSON.parse(localStorage.getItem('theme'));
+    return theme ?  theme : MUSIC[0];
+  }
+
   playTheme(src: string): Promise<void> {
+
+    const music = this.getTheme();
+
     this.mainTheme = new Audio();
-    this.mainTheme.src = src;
+    this.mainTheme.src = music.path;
     this.mainTheme.volume = 0.1;
     this.mainTheme.addEventListener('ended', () => {
       this.mainTheme.currentTime = 0;
@@ -35,10 +46,6 @@ export class SoundService {
     this.soundSpell = new Audio();
     this.soundSpell.src = src;
     this.soundSpell.volume = 0.1;
-    // this.soundSpell.addEventListener('ended', () => {
-    //   this.soundSpell.currentTime = 0;
-    //   this.soundSpell.play();
-    // });
     this.soundSpell.load();
     return this.soundSpell.play();
   }
@@ -49,6 +56,10 @@ export class SoundService {
 
   getMainThemeObject(){
     return this.mainTheme;
+  }
+
+  saveTheme(music) {
+    localStorage.setItem('theme', JSON.stringify(music));
   }
 
 }

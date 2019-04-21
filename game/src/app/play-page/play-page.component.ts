@@ -147,8 +147,8 @@ export class PlayPageComponent implements OnInit {
 
   openMusicSettingsDialog() {
     this.dialog.open(MusicSettingsComponent, {
-      height: '400px',
-      width: '600px',
+      height: '420px',
+      width: '450px',
     });
   }
 

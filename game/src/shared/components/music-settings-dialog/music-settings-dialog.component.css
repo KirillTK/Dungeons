@@ -1,0 +1,26 @@
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.music-item {
+    margin: 5px;
+}
+
+.item-music {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.hide_btn {
+    position: absolute;
+    left: 61%;
+    top: 29%;
+}
