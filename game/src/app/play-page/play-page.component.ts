@@ -1,3 +1,4 @@
+import { FinishGameComponent } from './../../shared/components/finish-game/finish-game.component';
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {DialogComponent} from './dialog/dialog.component';
@@ -8,7 +9,6 @@ import {CharacterSharedService} from '../../shared/services/character-shared.ser
 import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref';
 import {FightService} from "../../shared/services/fight.service";
 import {Observable} from "rxjs";
-import { ThrowStmt } from '@angular/compiler';
 import { MusicSettingsComponent } from 'src/shared/components/music-settings-dialog/music-settings-dialog.component';
 
 @Component({
@@ -79,12 +79,7 @@ export class PlayPageComponent implements OnInit {
     this.resultGame = result;
 
     if (result === 'lose') {
-      this.scoreboard.addUser({
-        name: this.characterSharedService.getHeroName(),
-        score: this.score
-      }).then();
-
-      this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
+      this.finishGame();
     }
 
     if (result === 'win') {
@@ -147,6 +142,25 @@ export class PlayPageComponent implements OnInit {
     this.dialog.open(MusicSettingsComponent, {
       height: '420px',
       width: '450px',
+    });
+  }
+
+  finishGame() {
+    this.scoreboard.addUser({
+      name: this.characterSharedService.getHeroName(),
+      score: this.score
+    }).then();
+
+    this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
+  }
+
+
+  onFinishGame() {
+    const dialogRef = this.dialog.open(FinishGameComponent, {data: this.characterSharedService.getHeroName()});
+    dialogRef.afterClosed().subscribe( result=> {
+      if(result) {
+        this.finishGame();
+      }
     });
   }
 

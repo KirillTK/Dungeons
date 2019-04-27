@@ -7,7 +7,8 @@ import {
   MatInputModule,
   MatPaginatorModule,
   MatRadioModule,
-  MatTableModule
+  MatTableModule,
+  MatTooltipModule
 } from '@angular/material';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 
@@ -20,7 +21,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MatFormFieldModule,
     MatRadioModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     MatDialogModule,
@@ -30,7 +32,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MatFormFieldModule,
     MatRadioModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }
