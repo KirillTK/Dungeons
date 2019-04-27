@@ -1,0 +1,25 @@
+<section class="list-music">
+
+    <!-- <span *ngFor="let item of music">
+        {{item.name}}
+    </span> -->
+
+    <button mat-icon-button (click)="closeDialog()" class="hide_btn" style="width: 50px; height: 50px">
+            <mat-icon aria-label="hide dialog" style="font-size: 3em; width: 50px;">cancel</mat-icon>
+    </button>
+
+    <mat-radio-group aria-label="Select an option" class="music-group" style="display: flex; align-items: center;">
+        <mat-radio-button [value]="item" *ngFor="let item of music" class="music-item" (change)="changeTheme($event, item)">
+
+            <section class="item-music">
+                    <span>{{item.name}}</span>
+                    <audio controls>
+                            <source [src]="item.path" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                    </audio>
+            </section>
+            
+        </mat-radio-button>
+    </mat-radio-group>
+    
+</section>

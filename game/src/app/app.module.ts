@@ -27,6 +27,7 @@ import {FocusDirective} from '../shared/directive/FocusDirective';
 import 'hammerjs';
 import {SlideshowModule} from "ng-simple-slideshow";
 import {CharacterSharedService} from "../shared/services/character-shared.service";
+import {MusicSettingsComponent} from '../shared/components/music-settings-dialog/music-settings-dialog.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {CharacterSharedService} from "../shared/services/character-shared.servic
     DialogComponent,
     RegisterDialogComponent,
     ScoreTableComponent,
-    FocusDirective
+    FocusDirective,
+    MusicSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {CharacterSharedService} from "../shared/services/character-shared.servic
   entryComponents: [
     DialogComponent,
     RegisterDialogComponent,
-    TasksComponent
+    TasksComponent,
+    MusicSettingsComponent
   ]
 })
 export class AppModule {

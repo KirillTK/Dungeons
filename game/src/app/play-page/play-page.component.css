@@ -29,3 +29,11 @@
     bottom: 65%;
     left: 3%;
 }
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 27%;
+    left: 3%;
+}
