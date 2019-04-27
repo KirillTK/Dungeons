@@ -33,17 +33,20 @@ export class FightService {
   }
 
   getLevelIndex(): number {
-    return  this.level > LEVEL.length ? this.level = 1 : this.level;
+    return  this.level > LEVEL.length - 1 ? this.level = 0 : this.level;
   }
 
   getBattlefiedPath(): string {
-    console.log(this.level);
     return LEVEL[this.getLevelIndex()];
   }
 
   renderBattlefield(battlefield: ElementRef): void {
-    console.log(battlefield, `"url('${this.getBattlefiedPath()}')"`);
     battlefield.nativeElement.style.backgroundImage = `url('${this.getBattlefiedPath()}')`;
+  }
+
+  nextLevel(battlefield: ElementRef): void {
+    this.level++;
+    this.renderBattlefield(battlefield);
   }
 
 }

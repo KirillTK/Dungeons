@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
   templateUrl: "./music-settings-dialog.component.html",
   styleUrls: ["./music-settings-dialog.component.css"]
 })
-export class MusicSettingsComponent implements OnInit {
+export class MusicSettingsComponent {
   music = MUSIC;
 
   constructor(
@@ -17,16 +17,11 @@ export class MusicSettingsComponent implements OnInit {
     private sound: SoundService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.music);
-  }
-
   closeDialog(): void {
     this.dialogRef.close();
   }
 
   changeTheme(event, music) {
-    console.log(music);
     this.sound.saveTheme(music);
   }
 }

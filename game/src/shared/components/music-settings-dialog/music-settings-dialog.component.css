@@ -24,3 +24,7 @@
     left: 58%;
     top: 29%;
 }
+
+.mat-radio-container {
+    margin-top: 20px !important;
+}

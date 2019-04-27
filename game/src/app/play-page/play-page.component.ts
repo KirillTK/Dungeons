@@ -52,11 +52,8 @@ export class PlayPageComponent implements OnInit {
     this.finishHeroAnimation$.subscribe(() => this.openTaskDialog());
 
     this.finishEnemyAnimation$.subscribe(() => this.openTaskDialog());
-
-    console.log(this.battlefield);
   
     this.fight.renderBattlefield(this.battlefield);
-
   }
 
   getAnswer(answer) {
@@ -94,6 +91,7 @@ export class PlayPageComponent implements OnInit {
       setTimeout(() => {
         this.amoutOfEnemies++;
         this.isRefreshSession = !this.isRefreshSession;
+        this.fight.nextLevel(this.battlefield);
       }, 1700);
     }
 
