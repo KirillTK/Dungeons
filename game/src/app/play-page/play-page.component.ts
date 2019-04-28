@@ -85,6 +85,7 @@ export class PlayPageComponent implements OnInit {
     if (result === 'win') {
       setTimeout(() => {
         this.amoutOfEnemies++;
+        this.fight.nextLevel(this.battlefield);
         this.isRefreshSession = !this.isRefreshSession;
         this.fight.nextLevel(this.battlefield);
       }, 1700);
