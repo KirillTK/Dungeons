@@ -51,9 +51,18 @@ export class PlayPageComponent implements OnInit  {
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
 
-    this.finishHeroAnimation$.subscribe(() => this.openTaskDialog());
+    // this.finishHeroAnimation$.subscribe(() => {
+    //   if(this.resultGame !== 'lose'){
+    //     this.openTaskDialog();
+    //   }
+    // });
 
-    this.finishEnemyAnimation$.subscribe(() => this.openTaskDialog());
+    // this.finishEnemyAnimation$.subscribe(() => {
+    //   console.log('result game', this.resultGame);
+    //   if(this.resultGame !== 'lose') {
+    //     this.openTaskDialog();
+    //   }
+    // });
   
     this.fight.renderBattlefield(this.battlefield);
   }
@@ -77,7 +86,7 @@ export class PlayPageComponent implements OnInit  {
 
 
   getResultGame(result: string) {
-
+    // this.taskDialogRef.close();
     this.resultGame = result;
 
     if (result === 'lose') {
@@ -119,11 +128,13 @@ export class PlayPageComponent implements OnInit  {
   }
 
   isFinishAnimateEnemyAttack(value: boolean) {
-    this.isEnemyAttackEnd = value;
-    setTimeout(() => {
-      this.isEnemyAttackEnd = false;
-      this.openTaskDialog();
-    }, 0);
+    if(this.resultGame !== 'lose') {
+      this.isEnemyAttackEnd = value;
+      setTimeout(() => {
+        this.isEnemyAttackEnd = false;
+        this.openTaskDialog();
+      }, 0);
+    }
   }
 
   openTaskDialog() {
