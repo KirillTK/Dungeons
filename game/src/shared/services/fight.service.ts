@@ -46,6 +46,7 @@ export class FightService {
 
   nextLevel(battlefield: ElementRef): void {
     this.level++;
+    console.log(this.level);
     this.renderBattlefield(battlefield);
   }
 
