@@ -1,3 +1,4 @@
+import { InfoDialogComponent } from './../shared/components/info-dialog/info-dialog.component';
 import { FinishGameComponent } from './../shared/components/finish-game/finish-game.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -46,7 +47,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     ScoreTableComponent,
     FocusDirective,
     MusicSettingsComponent,
-    FinishGameComponent
+    FinishGameComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     RegisterDialogComponent,
     TasksComponent,
     MusicSettingsComponent,
-    FinishGameComponent
+    FinishGameComponent,
+    InfoDialogComponent
   ]
 })
 export class AppModule {

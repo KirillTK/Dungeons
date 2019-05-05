@@ -10,13 +10,14 @@ import {MatDialogRef} from '@angular/material/dialog/typings/dialog-ref';
 import {FightService} from "../../shared/services/fight.service";
 import {Observable} from "rxjs";
 import { MusicSettingsComponent } from 'src/shared/components/music-settings-dialog/music-settings-dialog.component';
+import { InfoDialogComponent } from 'src/shared/components/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-play-page',
   templateUrl: './play-page.component.html',
   styleUrls: ['./play-page.component.css']
 })
-export class PlayPageComponent implements OnInit {
+export class PlayPageComponent implements OnInit  {
 
   public answer;
   public score = 0;
@@ -44,8 +45,9 @@ export class PlayPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.openTaskDialog();
-
+    // this.openTaskDialog();
+    setTimeout(()=> this.openInfoDialog(),0);
+    
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
 
@@ -161,6 +163,13 @@ export class PlayPageComponent implements OnInit {
       if(result) {
         this.finishGame();
       }
+    });
+  }
+
+  openInfoDialog() {
+    this.dialog.open(InfoDialogComponent, {
+      height: '600px',
+      width: '800px'
     });
   }
 
