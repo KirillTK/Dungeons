@@ -87,7 +87,6 @@ export class TasksComponent implements OnInit {
 
   onQuiz(){
     this.quizTask = this.tasks.getQuizTask();
-    console.log('quiz', this.quizTask);
     this.typeTask = 'quiz';
   }
 
@@ -140,7 +139,7 @@ export class TasksComponent implements OnInit {
   }
 
   showCurrentAnswer(){
-    console.log(this.task.result);
+  
   }
 
 }

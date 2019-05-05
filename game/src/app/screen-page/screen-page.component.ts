@@ -9,10 +9,9 @@ import {KeyControl} from "../../shared/model/KeyControl";
 })
 export class ScreenPageComponent implements OnInit {
 
-  public index = 0;
   height: string = '400px';
   public screenshots = [{url: 'assets/screenshots/screen1.jpg'},
-    {url: 'assets/screenshots/screen2.jpg'},
+    {url: 'assets/screenshots/screen2.jpg', caption: 'Hi manasdasdasdasdas'},
     {url: 'assets/screenshots/screen3.jpg'},
     {url: 'assets/screenshots/screen4.jpg'},
     {url: 'assets/screenshots/screen5.jpg'},
