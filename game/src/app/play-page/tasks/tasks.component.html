@@ -49,7 +49,14 @@
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
-    <button mat-raised-button color="warn" type="submit" [mat-dialog-close]="getResult(answer)">Ok</button>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" type="submit" (click)="close()" *ngIf="!showResult">Ok</button>
   </div>
 
 
@@ -58,7 +65,14 @@
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
-    <button mat-raised-button color="warn" [mat-dialog-close]="getResult(answer)">Ok</button>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="close()" *ngIf="!showResult">Ok</button>
   </div>
 
 
@@ -67,10 +81,18 @@
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
-    <button mat-raised-button color="warn" [mat-dialog-close]="getResult(answer)">Ok</button>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="close()" *ngIf="!showResult">Ok</button>
   </div>
 
 
+  <!-- ? -->
   <div class="quiz-are" *ngIf="typeTask === 'quiz'">
     <span class="expression quiz-task">{{quizTask.expression}}</span>
 
@@ -79,9 +101,17 @@
                         appFocusDirective>{{option}}
       </mat-radio-button>
     </mat-radio-group>
-    <button mat-raised-button color="warn" [mat-dialog-close]="getResultQuizTask()" style="margin-top: 20px">Ok</button>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="closeQuizTask()" style="margin-top: 20px" *ngIf="!showResult">Ok</button>
   </div>
 
+  <!-- ? -->
   <div class="task" *ngIf="typeTask === 'order'">
     <span class="expression">{{task.expression}}</span>
 
@@ -91,12 +121,19 @@
       <div class="letter-box" *ngFor="let letter of dragArray" cdkDrag>{{letter}}</div>
     </div>
 
-    <button mat-raised-button color="warn" [mat-dialog-close]="getDragResult()">Ok</button>
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="closeDragResult()" *ngIf="!showResult">Ok</button>
   </div>
 
   <button mat-icon-button (click)="closeDialog()" class="hide_btn" style="width: 50px; height: 50px">
     <mat-icon aria-label="hide dialog" style="font-size: 3em; width: 50px;">cancel</mat-icon>
   </button>
+
 
 
 </div>
