@@ -22,6 +22,8 @@ export class TasksComponent implements OnInit {
   @Output() result = new EventEmitter<string>();
   public keyControl = KeyControl;
   public dragArray: string[];
+  showResult: boolean;
+  isCurrect: boolean;
 
   quizControl = new FormControl(null, [Validators.required]);
 
@@ -126,7 +128,24 @@ export class TasksComponent implements OnInit {
 
 
   close() {
-    this.dialogRef.close(this.getResult(this.answer));
+    const result = this.getResult(this.answer);
+    this.isCurrect = result.result === 'Correct';
+    this.showResult = true;
+    setTimeout( ()=> this.dialogRef.close(result), 2000);
+  }
+
+  closeQuizTask() {
+    const result = this.getResultQuizTask();
+    this.isCurrect = result.result === 'Correct';
+    this.showResult = true;
+    setTimeout( ()=> this.dialogRef.close(result), 2000);
+  }
+
+  closeDragResult() {
+    const result = this.getDragResult();
+    this.isCurrect = result.result === 'Correct';
+    this.showResult = true;
+    setTimeout( ()=> this.dialogRef.close(result), 2000);
   }
 
 

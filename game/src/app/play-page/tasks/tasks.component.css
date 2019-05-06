@@ -82,6 +82,7 @@
     justify-content: space-between;
     width: 500px;
     height: 200px;
+    padding-left: 65px;
 }
 
 
@@ -183,4 +184,27 @@
     position: relative;
     bottom: 37%;
     right: 20px;
+}
+
+.alert {
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.wrong-answer {
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+}
+
+.right-answer {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+}
+
+.result {
+    margin-top: 20px;
 }
