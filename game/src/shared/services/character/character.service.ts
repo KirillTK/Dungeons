@@ -44,4 +44,8 @@ export class CharacterService {
     return await fetch(Path.HERO_PATH[userInfo.selectedHero.index]).then(response => response.json());
   }
 
+  getUserInfo() {
+      return JSON.parse(window.localStorage.getItem('userInfo'));
+  }
+
 }
