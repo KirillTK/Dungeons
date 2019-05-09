@@ -11,6 +11,7 @@ import {FightService} from "../../shared/services/fight.service";
 import {Observable} from "rxjs";
 import { MusicSettingsComponent } from 'src/shared/components/music-settings-dialog/music-settings-dialog.component';
 import { InfoDialogComponent } from 'src/shared/components/info-dialog/info-dialog.component';
+import { WinGameComponent } from 'src/shared/components/win-game/win-game.component';
 
 @Component({
   selector: 'app-play-page',
@@ -96,11 +97,27 @@ export class PlayPageComponent implements OnInit  {
     if (result === 'win') {
       setTimeout(() => {
         this.amoutOfEnemies++;
-        this.isRefreshSession = !this.isRefreshSession;
-        this.fight.nextLevel(this.battlefield);
+        if(this.fight.isFinishLevel()) {
+          const dialogRef = this.dialog.open(WinGameComponent);
+          dialogRef.afterClosed().subscribe( result => {
+            if(result) {
+              this.refreshGame();
+            } else {
+              this.finishGame();
+            }
+          });
+        } else {
+          this.refreshGame();
+        }
+        
       }, 1700);
     }
 
+  }
+
+  refreshGame() {
+    this.isRefreshSession = !this.isRefreshSession;
+    this.fight.nextLevel(this.battlefield);
   }
 
   openDialog(data) {

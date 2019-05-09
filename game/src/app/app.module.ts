@@ -1,3 +1,4 @@
+import { WinGameComponent } from './../shared/components/win-game/win-game.component';
 import { InfoDialogComponent } from './../shared/components/info-dialog/info-dialog.component';
 import { FinishGameComponent } from './../shared/components/finish-game/finish-game.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -48,7 +49,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     FocusDirective,
     MusicSettingsComponent,
     FinishGameComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    WinGameComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     TasksComponent,
     MusicSettingsComponent,
     FinishGameComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    WinGameComponent
   ]
 })
 export class AppModule {
