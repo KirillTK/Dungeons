@@ -96,12 +96,14 @@ export class EnemyComponent implements OnInit, OnChanges {
   }
 
   goBack(){
+    this.enemyElement.nativeElement.src = this.enemy.pathWalkBack;
     const diff = 0;
     let margin = 500;
 
     const time = setInterval(()=> {
       if(diff === margin) {
         clearInterval(time);
+        this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
       }
       this.enemyElement.nativeElement.style.marginRight = margin + 'px';
       margin -= 1;
@@ -109,6 +111,8 @@ export class EnemyComponent implements OnInit, OnChanges {
   }
 
   goStraight(attack) {
+
+    this.enemyElement.nativeElement.src = this.enemy.pathWalkStraight;
 
     const diff = 500;
     let margin = 0;
