@@ -5,4 +5,7 @@ export interface Character {
   pathDeath: string;
   pathHeat: string;
   name?:string;
+  pathWalkBack?: string;
+  pathWalkStraight?: string;
+  type: string;
 }

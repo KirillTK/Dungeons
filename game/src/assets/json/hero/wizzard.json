@@ -3,5 +3,6 @@
   "pathCharacter": "./assets/hero/wizard/alert.gif",
   "pathAttack": "./assets/hero/wizard/cast.gif",
   "pathDeath": "./assets/hero/wizard/die.gif",
-  "pathHeat": "./assets/hero/wizard/hit.gif"
+  "pathHeat": "./assets/hero/wizard/hit.gif",
+  "type": "distance"
 }
