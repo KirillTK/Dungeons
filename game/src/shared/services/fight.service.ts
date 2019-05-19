@@ -15,7 +15,7 @@ export class FightService {
   finishHeroAnimation = this._finishHeroAnimation.asObservable();
   finishEnemyAnimation = this._finishEnemyAnimation.asObservable();
 
-  private level = 0;
+  private level = 3;
 
   constructor() {
   }
@@ -48,6 +48,10 @@ export class FightService {
     this.level++;
     console.log(this.level);
     this.renderBattlefield(battlefield);
+  }
+
+  isFinishLevel(): boolean {
+      return this.level === LEVEL.length - 1;
   }
 
 }
