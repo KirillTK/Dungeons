@@ -60,20 +60,6 @@ export class EnemyComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
-    //
-    // if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined'){
-    //   if (changes.result.currentValue.result === 'Incorrect'){
-    //     this.attack();
-    //   }
-    // }
-    //
-    // if (changes.hasOwnProperty('isHeroAttackEnd')){
-    //    if (changes.isHeroAttackEnd.currentValue === true){
-    //      this.reduceHealth(25);
-    //    }
-    // }
-    //
     if (changes.hasOwnProperty('refreshSession')){
       if (changes.refreshSession.currentValue !== changes.refreshSession.previousValue){
         this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
@@ -89,15 +75,52 @@ export class EnemyComponent implements OnInit, OnChanges {
   }
 
   attack() {
+
+   this.goStraight(()=> {
+    this.animateAttack();
+   });
+  
+  }
+
+  animateAttack() {
     this.enemyElement.nativeElement.src = this.enemy.pathAttack;
     setTimeout(() => {
-      const healthHero = this.characterSharedService.getHeroHealth();
-      if (healthHero !== 0){
-        this.fight.setFinishEnemyAnimation(true);
-        // this.isFinishAnimationAttack.emit(true);
-      }
+    const healthHero = this.characterSharedService.getHeroHealth();
+    if (healthHero !== 0){
+      this.fight.setFinishEnemyAnimation(true);
+      // this.isFinishAnimationAttack.emit(true);
+    }
       this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
-    }, 1000);
+      this.goBack();
+    }, 1000); 
+  }
+
+  goBack(){
+    const diff = 0;
+    let margin = 500;
+
+    const time = setInterval(()=> {
+      if(diff === margin) {
+        clearInterval(time);
+      }
+      this.enemyElement.nativeElement.style.marginRight = margin + 'px';
+      margin -= 1;
+    })
+  }
+
+  goStraight(attack) {
+
+    const diff = 500;
+    let margin = 0;
+
+    const time = setInterval(()=> {
+      if(diff === margin) {
+        clearInterval(time);
+        attack();
+      }
+      this.enemyElement.nativeElement.style.marginRight = margin + 'px';
+      margin += 1;
+    })
   }
 
   die() {
