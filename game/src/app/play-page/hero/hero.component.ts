@@ -117,11 +117,12 @@ export class HeroComponent implements OnInit, OnChanges {
   }
 
   onAttack(spellSound: string) {
-    const difference = 500;
+    const difference = 300;
     const spell = document.getElementById('spell');
     const spellEffect = new Image();
     spellEffect.style.width = '300px';
     spellEffect.style.height = '100px';
+    spellEffect.style.position = 'absolute';
 
     spellEffect.src = this.castPath;
     spell.appendChild(spellEffect);
@@ -134,6 +135,8 @@ export class HeroComponent implements OnInit, OnChanges {
         this.soundSpell.stopSpellSound();
         spell.removeChild(spellEffect);
         clearInterval(time);
+        spell.style.width = '0';
+        spell.style.height = '0';
         this.fight.setFinishHeroAnimation(true);
         // this.isFinishAnimationAttack.emit(true);
       }
