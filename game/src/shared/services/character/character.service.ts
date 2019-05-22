@@ -1,20 +1,26 @@
+import { FightService } from './../fight.service';
 import {Injectable} from '@angular/core';
 import {Character} from '../../model/character';
 import * as _ from 'lodash';
 import {NamesForEnemy} from '../../model/NamesForEnemy';
 import {Path} from "../../model/Path";
 import {CharacterSharedService} from "../character-shared.service";
+import  ENEMIES  from 'src/app/common/enemies/enemies';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
 
-  constructor(private sharedService: CharacterSharedService) {
+  constructor(private sharedService: CharacterSharedService, private fight: FightService) {
   }
 
 
   getRandomCharacter(characters: string[]): string {
+    return characters[_.random(characters.length - 1)];
+  }
+
+  getRandomCharacter2(characters: Character[]) {
     return characters[_.random(characters.length - 1)];
   }
 
@@ -46,6 +52,16 @@ export class CharacterService {
 
   getUserInfo() {
       return JSON.parse(window.localStorage.getItem('userInfo'));
+  }
+
+  getRandomEnemy() {
+    if(this.fight.isFinishLevel()){
+    
+    } else {
+      const enemy = this.getRandomCharacter2(ENEMIES);
+      enemy.name = this.getRandomName();      
+      return enemy;
+    }
   }
 
 }

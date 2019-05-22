@@ -29,13 +29,7 @@ export class EnemyComponent implements OnInit {
 
   ngOnInit() {
 
-    this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
-      .then((character: Character) => {
-        this.enemy = character;
-        this.characterSharedService.setEnemyName(this.enemy.name);
-        this.characterSharedService.setEnemyHealth(this.enemy.health);
-        this.setState();
-      });
+    this.setEnemy();
 
     this.fight$ = this.fight.gameResult;
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
@@ -55,15 +49,16 @@ export class EnemyComponent implements OnInit {
     });
 
     this.refreshSession$.subscribe(()=>{
-      this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
-      .then((character: Character) => {
-        this.enemy = character;
-        this.characterSharedService.setEnemyName(this.enemy.name);
-        this.characterSharedService.setEnemyHealth(this.enemy.health);
-        this.setState();
-      });
+      this.setEnemy();
     })
 
+  }
+
+  setEnemy() {
+    this.enemy = this.character.getRandomEnemy();
+    this.characterSharedService.setEnemyName(this.enemy.name);
+    this.characterSharedService.setEnemyHealth(this.enemy.health);
+    this.setState();
   }
 
   attack() {
