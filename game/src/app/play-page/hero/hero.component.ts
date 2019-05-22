@@ -3,18 +3,14 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {CharacterService} from '../../../shared/services/character/character.service';
-import {Path} from '../../../shared/model/Path';
 import {Character} from '../../../shared/model/character';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
 import {SoundService} from '../../../shared/services/sound/sound.service';
-import {DAMAGE} from '../../../shared/model/Damage';
 import {Observable} from "rxjs";
 import {FightService} from "../../../shared/services/fight.service";
 
@@ -27,11 +23,8 @@ export class HeroComponent implements OnInit {
 
   public hero: Character;
   private castPath: string;
-  @Input() result: string;
   @Output() gameResult = new EventEmitter<string>();
   @ViewChild('hero') heroElement: ElementRef;
-  @Output() isFinishAnimationAttack = new EventEmitter<any>();
-  @Input() isEnemyAttackEnd: boolean;
 
   fight$: Observable<any>;
   finishEnemyAnimation$: Observable<any>;
@@ -90,7 +83,6 @@ export class HeroComponent implements OnInit {
     if (this.hero.health - amountHealth <= 0) {
       this.die();
       this.gameResult.emit('lose');
-      this.isFinishAnimationAttack.emit(false);
     } else {
       this.hurt();
     }
@@ -120,7 +112,6 @@ export class HeroComponent implements OnInit {
         spell.style.width = '0';
         spell.style.height = '0';
         this.fight.setFinishHeroAnimation(true);
-        // this.isFinishAnimationAttack.emit(true);
       }
 
       spellEffect.style.marginLeft = margin + 'px';

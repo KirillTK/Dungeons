@@ -3,7 +3,6 @@ import {Character} from '../../../shared/model/character';
 import {Path} from '../../../shared/model/Path';
 import {CharacterService} from '../../../shared/services/character/character.service';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
-import {DAMAGE} from '../../../shared/model/Damage';
 import {FightService} from "../../../shared/services/fight.service";
 import {Observable} from "rxjs";
 
@@ -16,11 +15,7 @@ export class EnemyComponent implements OnInit {
 
   public enemy: Character;
 
-  @Input() result: string;
-  @Input() refreshSession: boolean;
-  @Input() isHeroAttackEnd: boolean;
   @Output() gameResult = new EventEmitter<string>();
-  @Output() isFinishAnimationAttack = new EventEmitter<boolean>();
   @ViewChild('enemy') enemyElement: ElementRef;
 
   fight$: Observable<any>;
@@ -85,7 +80,6 @@ export class EnemyComponent implements OnInit {
     const healthHero = this.characterSharedService.getHeroHealth();
     if (healthHero !== 0){
       this.fight.setFinishEnemyAnimation(true);
-      // this.isFinishAnimationAttack.emit(true);
     }
       this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
       this.goBack();
