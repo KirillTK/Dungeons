@@ -12,7 +12,7 @@ import {Observable} from "rxjs";
   templateUrl: './enemy.component.html',
   styleUrls: ['./enemy.component.css']
 })
-export class EnemyComponent implements OnInit, OnChanges {
+export class EnemyComponent implements OnInit {
 
   public enemy: Character;
 
@@ -25,6 +25,7 @@ export class EnemyComponent implements OnInit, OnChanges {
 
   fight$: Observable<any>;
   finishHeroAnimation$: Observable<any>;
+  refreshSession$: Observable<any>;
   damageSpell: number;
 
 
@@ -43,6 +44,7 @@ export class EnemyComponent implements OnInit, OnChanges {
 
     this.fight$ = this.fight.gameResult;
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
+    this.refreshSession$ = this.fight.refreshSession$;
 
     this.fight$.subscribe( (result)=>{
 
@@ -55,22 +57,17 @@ export class EnemyComponent implements OnInit, OnChanges {
 
     this.finishHeroAnimation$.subscribe( ()=>{
       this.reduceHealth(this.damageSpell);
+    });
+
+    this.refreshSession$.subscribe(()=>{
+      this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
+      .then((character: Character) => {
+        this.enemy = character;
+        this.characterSharedService.setEnemyName(this.enemy.name);
+        this.characterSharedService.setEnemyHealth(this.enemy.health);
+        this.setState();
+      });
     })
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('refreshSession')){
-      if (changes.refreshSession.currentValue !== changes.refreshSession.previousValue){
-        this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
-          .then((character: Character) => {
-            this.enemy = character;
-            this.characterSharedService.setEnemyName(this.enemy.name);
-            this.characterSharedService.setEnemyHealth(this.enemy.health);
-            this.setState();
-          });
-      }
-    }
 
   }
 

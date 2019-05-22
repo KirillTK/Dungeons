@@ -23,9 +23,6 @@ export class PlayPageComponent implements OnInit  {
   public answer;
   public score = 0;
   public resultGame: string;
-  public isRefreshSession = false;
-  public isHeroAttackEnd: boolean;
-  public isEnemyAttackEnd: boolean;
   private amoutOfEnemies = 0;
   private taskDialogRef: MatDialogRef<any>;
   finishHeroAnimation$: Observable<any>;
@@ -71,7 +68,6 @@ export class PlayPageComponent implements OnInit  {
 
 
   getResultGame(result: string) {
-    // this.taskDialogRef.close();
     this.resultGame = result;
 
     if (result === 'lose') {
@@ -96,12 +92,33 @@ export class PlayPageComponent implements OnInit  {
         
       }, 1700);
     }
-
   }
 
   refreshGame() {
-    this.isRefreshSession = !this.isRefreshSession;
+    this.fight.refreshSession();
     this.fight.nextLevel(this.battlefield);
+  }
+
+  finishGame() {
+    this.scoreboard.addUser({
+      name: this.characterSharedService.getHeroName(),
+      score: this.score
+    }).then();
+
+    this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
+  }
+
+  openTaskDialog() {
+    Promise.resolve().then(() => {
+      this.taskDialogRef = this.taskDialog.open(TasksComponent, {disableClose: true, panelClass: 'task-dialog'});
+      this.taskDialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log('result', result);
+          this.fight.setGameResult(result);
+          this.getAnswer(result);
+        }
+      });
+    });
   }
 
   openDialog(data) {
@@ -118,56 +135,12 @@ export class PlayPageComponent implements OnInit  {
     });
   }
 
-  isFinishAnimateHeroAttack(value: boolean) {
-    if (this.resultGame !== 'lose') {
-      this.isHeroAttackEnd = value;
-      setTimeout(() => {
-        this.isHeroAttackEnd = false;
-        this.openTaskDialog();
-      }, 0);
-    }
-  }
-
-  isFinishAnimateEnemyAttack(value: boolean) {
-    if(this.resultGame !== 'lose') {
-      this.isEnemyAttackEnd = value;
-      setTimeout(() => {
-        this.isEnemyAttackEnd = false;
-        this.openTaskDialog();
-      }, 0);
-    }
-  }
-
-  openTaskDialog() {
-    Promise.resolve().then(() => {
-      this.taskDialogRef = this.taskDialog.open(TasksComponent, {disableClose: true, panelClass: 'task-dialog'});
-      this.taskDialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('result', result);
-          this.fight.setGameResult(result);
-          this.getAnswer(result);
-        }
-      });
-    });
-
-  }
-
   openMusicSettingsDialog() {
     this.dialog.open(MusicSettingsComponent, {
       height: '420px',
       width: '450px',
     });
   }
-
-  finishGame() {
-    this.scoreboard.addUser({
-      name: this.characterSharedService.getHeroName(),
-      score: this.score
-    }).then();
-
-    this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
-  }
-
 
   onFinishGame() {
     const dialogRef = this.dialog.open(FinishGameComponent, {data: this.characterSharedService.getHeroName()});
