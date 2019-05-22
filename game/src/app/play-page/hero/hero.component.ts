@@ -34,11 +34,9 @@ export class HeroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.character.getUserCharacter().then((character: Character) => {
-      this.hero = character;
-      this.characterSharedService.setHeroHealth(this.hero.health);
-      this.heroElement.nativeElement.src = this.hero.pathCharacter;
-    });
+    this.hero = this.character.getUserCharacter();
+    this.characterSharedService.setHeroHealth(this.hero.health);
+    this.heroElement.nativeElement.src = this.hero.pathCharacter;
 
     this.fight$ = this.fight.gameResult;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;

@@ -1,4 +1,4 @@
-const heroes = {
+const HEROES = {
     archer : {
         "health" : 100,
         "pathCharacter": "./assets/hero/archer/alert.gif",
@@ -26,4 +26,4 @@ const heroes = {
 }
 
 
-export default heroes;
+export default HEROES;

@@ -6,6 +6,7 @@ import {NamesForEnemy} from '../../model/NamesForEnemy';
 import {Path} from "../../model/Path";
 import {CharacterSharedService} from "../character-shared.service";
 import  ENEMIES  from 'src/app/common/enemies/enemies';
+import HEROES from 'src/app/common/heroes/heroes';
 
 @Injectable({
   providedIn: 'root'
@@ -44,10 +45,11 @@ export class CharacterService {
       });
   }
 
-  async getUserCharacter() {
+  getUserCharacter() {
     const userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
     this.sharedService.setHeroName(userInfo.nickName);
-    return await fetch(Path.HERO_PATH[userInfo.selectedHero.index]).then(response => response.json());
+    const {name} = userInfo.selectedHero.selectedCharacter;
+    return HEROES[name];
   }
 
   getUserInfo() {
