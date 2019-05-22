@@ -1,4 +1,4 @@
-const enemies = [
+export const enemies = [
     {
         "health" : 100,
         "pathCharacter": "./assets/enemy/enemy1/golem.gif",
@@ -31,5 +31,7 @@ const enemies = [
       }
 
 ]
-  
-export default enemies;
+
+export const boses = [
+
+]

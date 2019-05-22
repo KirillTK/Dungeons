@@ -31,13 +31,11 @@ export class PlayPageComponent implements OnInit  {
   finishHeroAnimation$: Observable<any>;
   finishEnemyAnimation$: Observable<any>;
 
-  // @ViewChild('hero') hero: ElementRef;
   @ViewChild('battlefield') battlefield: ElementRef;
   @Output() isContinue = new EventEmitter<boolean>();
 
   constructor(public dialog: MatDialog,
               private route: Router,
-              private parent: ViewContainerRef,
               private scoreboard: ScoreboardService,
               private characterSharedService: CharacterSharedService,
               public taskDialog: MatDialog,
@@ -46,24 +44,10 @@ export class PlayPageComponent implements OnInit  {
   }
 
   ngOnInit() {
-    // this.openTaskDialog();
     setTimeout(()=> this.openInfoDialog(),0);
     
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
-
-    // this.finishHeroAnimation$.subscribe(() => {
-    //   if(this.resultGame !== 'lose'){
-    //     this.openTaskDialog();
-    //   }
-    // });
-
-    // this.finishEnemyAnimation$.subscribe(() => {
-    //   console.log('result game', this.resultGame);
-    //   if(this.resultGame !== 'lose') {
-    //     this.openTaskDialog();
-    //   }
-    // });
   
     this.fight.renderBattlefield(this.battlefield);
   }

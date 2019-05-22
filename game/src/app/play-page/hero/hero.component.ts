@@ -23,7 +23,7 @@ import {FightService} from "../../../shared/services/fight.service";
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class HeroComponent implements OnInit, OnChanges {
+export class HeroComponent implements OnInit {
 
   public hero: Character;
   private castPath: string;
@@ -65,24 +65,6 @@ export class HeroComponent implements OnInit, OnChanges {
     this.finishEnemyAnimation$.subscribe( ()=>{
       this.reduceHealth(this.damageSpell);
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-    // if (changes.hasOwnProperty('result') && typeof changes.result.currentValue !== 'undefined') {
-    //   if (changes.result.currentValue.result === 'Correct') {
-    //     const spellSound = changes.result.currentValue.castSound;
-    //     this.castPath = changes.result.currentValue.castPath;
-    //     this.attack(spellSound);
-    //   }
-    //
-    //
-    //   if (changes.result.currentValue.result === 'Incorrect') {
-    //     this.reduceHealth(25);
-    //   }
-    //
-    // }
-
   }
 
   attack(spellSound: string) {
