@@ -1,3 +1,4 @@
+import { BOSSES } from './../../../app/common/enemies/enemies';
 import { FightService } from './../fight.service';
 import {Injectable} from '@angular/core';
 import {Character} from '../../model/character';
@@ -5,7 +6,7 @@ import * as _ from 'lodash';
 import {NamesForEnemy} from '../../model/NamesForEnemy';
 import {Path} from "../../model/Path";
 import {CharacterSharedService} from "../character-shared.service";
-import  ENEMIES  from 'src/app/common/enemies/enemies';
+import { ENEMIES }   from 'src/app/common/enemies/enemies';
 import HEROES from 'src/app/common/heroes/heroes';
 
 @Injectable({
@@ -57,25 +58,13 @@ export class CharacterService {
   }
 
   getRandomEnemy() {
+    let enemy;
     if(this.fight.isFinishLevel()){
-      console.log(1);
-      const enemy =  {
-        health : 300,
-        pathCharacter: "./assets/enemy/enemy2/golem.gif",
-        pathAttack: "./assets/enemy/enemy2/golem-attack.gif",
-        pathDeath: "./assets/enemy/enemy2/golem-death.gif",
-        pathHeat: "./assets/enemy/enemy2/golem-hurt.gif",
-        pathWalkBack: "./assets/enemy/enemy2/golem-back.gif",
-        pathWalkStraight: "./assets/enemy/enemy2/golem-straight.gif",
-        type: "melee",
-        name: this.getRandomName()
-      };
-      return enemy;
+      enemy =  this.getRandomCharacter2(BOSSES);
     } else {
-      const enemy = this.getRandomCharacter2(ENEMIES);
-      enemy.name = this.getRandomName();      
-      return enemy;
+      enemy = this.getRandomCharacter2(ENEMIES);
     }
+    return enemy;
   }
 
 }

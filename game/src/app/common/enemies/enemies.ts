@@ -1,4 +1,4 @@
-const ENEMIES = [
+export const ENEMIES = [
     {
         "health" : 100,
         "pathCharacter": "./assets/enemy/enemy1/golem.gif",
@@ -32,4 +32,16 @@ const ENEMIES = [
 
 ]
 
-export default ENEMIES;
+
+export const BOSSES = [
+  {
+    "health" : 300,
+    "pathCharacter": "./assets/enemy/bosses/bosses1/idl.gif",
+    "pathAttack": "./assets/enemy/bosses/bosses1/attack.gif",
+    "pathDeath": "./assets/enemy/bosses/bosses1/die.gif",
+    "pathHeat": "./assets/enemy/bosses/bosses1/hurt.gif",
+    "pathWalkBack": "./assets/enemy/bosses/bosses1/back.gif",
+    "pathWalkStraight": "./assets/enemy/bosses/bosses1/run.gif",
+    "type": "melee"
+  }
+]
