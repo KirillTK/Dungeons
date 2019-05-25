@@ -58,7 +58,9 @@ export class CharacterService {
 
   getRandomEnemy() {
     if(this.fight.isFinishLevel()){
-    
+      const enemy = this.getRandomCharacter2(ENEMIES);
+      enemy.name = this.getRandomName();      
+      return enemy;
     } else {
       const enemy = this.getRandomCharacter2(ENEMIES);
       enemy.name = this.getRandomName();      

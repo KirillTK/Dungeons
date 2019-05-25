@@ -33,6 +33,7 @@ export class BarComponent implements OnInit, AfterViewInit {
 
   finishHeroAnimation$: Observable<any>;
   finishEnemyAnimation$: Observable<any>;
+  refreshSession$: Observable<any>;
 
 
   constructor(private cd: ChangeDetectorRef, private characterSharedService: CharacterSharedService, private fight: FightService) {
@@ -41,6 +42,7 @@ export class BarComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
+    this.refreshSession$ = this.fight.refreshSession$;
 
     this.finishHeroAnimation$.subscribe(()=>{
         setTimeout(()=>this.renderHP(),0)
@@ -49,6 +51,10 @@ export class BarComponent implements OnInit, AfterViewInit {
     this.finishEnemyAnimation$.subscribe(()=>{
         setTimeout(()=>this.renderHP(),0)
     });
+
+    this.refreshSession$.subscribe(()=>{
+      setTimeout(()=>this.renderHP(),0)
+    })
 
   }
 
@@ -62,8 +68,6 @@ export class BarComponent implements OnInit, AfterViewInit {
 
     this._heroHealth = this.characterSharedService.getHeroHealth();
     this.heroHealth.nativeElement.innerText = this._heroHealth + ' / 100';
-
-    console.log(this._enemyHealth, this._heroHealth)
 
     this.enemyName.nativeElement.innerText = this.characterSharedService.getEnemyName();
     this.heroName.nativeElement.innerText = this.characterSharedService.getHeroName();

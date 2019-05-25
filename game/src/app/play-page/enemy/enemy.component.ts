@@ -55,7 +55,7 @@ export class EnemyComponent implements OnInit {
   }
 
   setEnemy() {
-    this.enemy = this.character.getRandomEnemy();
+    this.enemy = Object.assign({}, this.character.getRandomEnemy());
     this.characterSharedService.setEnemyName(this.enemy.name);
     this.characterSharedService.setEnemyHealth(this.enemy.health);
     this.setState();
