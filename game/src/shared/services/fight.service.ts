@@ -10,12 +10,14 @@ export class FightService {
   private _gameResult: Subject<any> = new Subject<any>();
   private _finishHeroAnimation: Subject<any> = new Subject<any>();
   private _finishEnemyAnimation: Subject<any> = new Subject<any>();
+  private _refreshSession: Subject<any> = new Subject<any>();
 
   gameResult = this._gameResult.asObservable();
   finishHeroAnimation = this._finishHeroAnimation.asObservable();
   finishEnemyAnimation = this._finishEnemyAnimation.asObservable();
+  refreshSession$ = this._refreshSession.asObservable();
 
-  private level = 3;
+  private level = 4;
 
   constructor() {
   }
@@ -54,4 +56,11 @@ export class FightService {
       return this.level === LEVEL.length - 1;
   }
 
+  refreshSession() {
+    this._refreshSession.next();
+  }
+
+  resetLevel(){
+    this.level = -1;
+  }
 }

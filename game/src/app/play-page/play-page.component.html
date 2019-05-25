@@ -34,21 +34,9 @@
 
   </section>
 
-  
 
   <section class="heroes">
-    <app-hero [result]="answer"
-              (gameResult)="getResultGame($event)"
-              [isEnemyAttackEnd]="isEnemyAttackEnd"
-              (isFinishAnimationAttack)="isFinishAnimateHeroAttack($event)"
-    ></app-hero>
-
-    <app-enemy
-            [result]="answer"
-            (gameResult)="getResultGame($event)"
-            [refreshSession]="isRefreshSession"
-            [isHeroAttackEnd]="isHeroAttackEnd"
-            (isFinishAnimationAttack)="isFinishAnimateEnemyAttack($event)"
-    ></app-enemy>
+    <app-hero (gameResult)="getResultGame($event)"></app-hero>
+    <app-enemy (gameResult)="getResultGame($event)"></app-enemy>
   </section>
 </div>

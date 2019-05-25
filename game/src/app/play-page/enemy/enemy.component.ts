@@ -3,7 +3,6 @@ import {Character} from '../../../shared/model/character';
 import {Path} from '../../../shared/model/Path';
 import {CharacterService} from '../../../shared/services/character/character.service';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
-import {DAMAGE} from '../../../shared/model/Damage';
 import {FightService} from "../../../shared/services/fight.service";
 import {Observable} from "rxjs";
 
@@ -12,19 +11,16 @@ import {Observable} from "rxjs";
   templateUrl: './enemy.component.html',
   styleUrls: ['./enemy.component.css']
 })
-export class EnemyComponent implements OnInit, OnChanges {
+export class EnemyComponent implements OnInit {
 
   public enemy: Character;
 
-  @Input() result: string;
-  @Input() refreshSession: boolean;
-  @Input() isHeroAttackEnd: boolean;
   @Output() gameResult = new EventEmitter<string>();
-  @Output() isFinishAnimationAttack = new EventEmitter<boolean>();
   @ViewChild('enemy') enemyElement: ElementRef;
 
   fight$: Observable<any>;
   finishHeroAnimation$: Observable<any>;
+  refreshSession$: Observable<any>;
   damageSpell: number;
 
 
@@ -33,16 +29,11 @@ export class EnemyComponent implements OnInit, OnChanges {
 
   ngOnInit() {
 
-    this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
-      .then((character: Character) => {
-        this.enemy = character;
-        this.characterSharedService.setEnemyName(this.enemy.name);
-        this.characterSharedService.setEnemyHealth(this.enemy.health);
-        this.setState();
-      });
+    this.setEnemy();
 
     this.fight$ = this.fight.gameResult;
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
+    this.refreshSession$ = this.fight.refreshSession$;
 
     this.fight$.subscribe( (result)=>{
 
@@ -55,23 +46,19 @@ export class EnemyComponent implements OnInit, OnChanges {
 
     this.finishHeroAnimation$.subscribe( ()=>{
       this.reduceHealth(this.damageSpell);
+    });
+
+    this.refreshSession$.subscribe(()=>{
+      this.setEnemy();
     })
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('refreshSession')){
-      if (changes.refreshSession.currentValue !== changes.refreshSession.previousValue){
-        this.character.getCharacterData(Path.ENEMY_PATH, 'enemy')
-          .then((character: Character) => {
-            this.enemy = character;
-            this.characterSharedService.setEnemyName(this.enemy.name);
-            this.characterSharedService.setEnemyHealth(this.enemy.health);
-            this.setState();
-          });
-      }
-    }
-
+  setEnemy() {
+    this.enemy = Object.assign({}, this.character.getRandomEnemy());
+    this.characterSharedService.setEnemyName(this.enemy.name);
+    this.characterSharedService.setEnemyHealth(this.enemy.health);
+    this.setState();
   }
 
   attack() {
@@ -88,7 +75,6 @@ export class EnemyComponent implements OnInit, OnChanges {
     const healthHero = this.characterSharedService.getHeroHealth();
     if (healthHero !== 0){
       this.fight.setFinishEnemyAnimation(true);
-      // this.isFinishAnimationAttack.emit(true);
     }
       this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
       this.goBack();
