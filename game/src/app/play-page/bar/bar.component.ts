@@ -64,8 +64,12 @@ export class BarComponent implements OnInit, AfterViewInit {
 
   private renderHP() {
     this._enemyHealth = this.characterSharedService.getEnemyHealth();
-    this.enemyHealth.nativeElement.innerText = this._enemyHealth + ' / 100';
-
+    if (this.fight.isFinishLevel()){
+      this.enemyHealth.nativeElement.innerText = this._enemyHealth + ' / 300';  
+    } else {
+      this.enemyHealth.nativeElement.innerText = this._enemyHealth + ' / 100';
+    }
+    
     this._heroHealth = this.characterSharedService.getHeroHealth();
     this.heroHealth.nativeElement.innerText = this._heroHealth + ' / 100';
 

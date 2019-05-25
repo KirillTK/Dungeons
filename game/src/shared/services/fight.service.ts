@@ -17,7 +17,7 @@ export class FightService {
   finishEnemyAnimation = this._finishEnemyAnimation.asObservable();
   refreshSession$ = this._refreshSession.asObservable();
 
-  private level = 3;
+  private level = 4;
 
   constructor() {
   }

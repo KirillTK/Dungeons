@@ -58,8 +58,18 @@ export class CharacterService {
 
   getRandomEnemy() {
     if(this.fight.isFinishLevel()){
-      const enemy = this.getRandomCharacter2(ENEMIES);
-      enemy.name = this.getRandomName();      
+      console.log(1);
+      const enemy =  {
+        health : 300,
+        pathCharacter: "./assets/enemy/enemy2/golem.gif",
+        pathAttack: "./assets/enemy/enemy2/golem-attack.gif",
+        pathDeath: "./assets/enemy/enemy2/golem-death.gif",
+        pathHeat: "./assets/enemy/enemy2/golem-hurt.gif",
+        pathWalkBack: "./assets/enemy/enemy2/golem-back.gif",
+        pathWalkStraight: "./assets/enemy/enemy2/golem-straight.gif",
+        type: "melee",
+        name: this.getRandomName()
+      };
       return enemy;
     } else {
       const enemy = this.getRandomCharacter2(ENEMIES);
