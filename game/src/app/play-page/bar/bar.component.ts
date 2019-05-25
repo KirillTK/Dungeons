@@ -84,9 +84,15 @@ export class BarComponent implements OnInit, AfterViewInit {
       hpElement.nativeElement.style.width = '100%';
       return;
     }
+    
+    if (characterHealth < 0) {
+      hpElement.nativeElement.style.width = '0%';
+      return;
+    }
 
     if (characterHealth < 100) {
       hpElement.nativeElement.style.width = characterHealth + '%';
+      return;
     }
   }
 
