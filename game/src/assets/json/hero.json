@@ -1,7 +1,0 @@
-{
-  "health" : 100,
-  "pathCharacter": "./assets/hero/alert.gif",
-  "pathAttack": "./assets/hero/cast.gif",
-  "pathDeath": "./assets/hero/die.gif",
-  "pathHeat": "./assets/hero/hit.gif"
-}
