@@ -36,7 +36,7 @@
 
 
   <section class="heroes">
-    <app-hero></app-hero>
-    <app-enemy></app-enemy>
+    <app-hero (gameResult)="getResultGame($event)"></app-hero>
+    <app-enemy (gameResult)="getResultGame($event)"></app-enemy>
   </section>
 </div>
