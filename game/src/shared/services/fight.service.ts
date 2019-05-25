@@ -60,4 +60,7 @@ export class FightService {
     this._refreshSession.next();
   }
 
+  resetLevel(){
+    this.level = -1;
+  }
 }

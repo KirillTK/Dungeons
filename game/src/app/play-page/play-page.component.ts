@@ -81,6 +81,7 @@ export class PlayPageComponent implements OnInit  {
           const dialogRef = this.dialog.open(WinGameComponent);
           dialogRef.afterClosed().subscribe( result => {
             if(result) {
+              this.fight.resetLevel();
               this.refreshGame();
             } else {
               this.finishGame();

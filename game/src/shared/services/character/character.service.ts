@@ -17,12 +17,7 @@ export class CharacterService {
   constructor(private sharedService: CharacterSharedService, private fight: FightService) {
   }
 
-
-  getRandomCharacter(characters: string[]): string {
-    return characters[_.random(characters.length - 1)];
-  }
-
-  getRandomCharacter2(characters: Character[]) {
+  getRandomCharacter(characters: Character[]) {
     return characters[_.random(characters.length - 1)];
   }
 
@@ -31,19 +26,6 @@ export class CharacterService {
     const type = NamesForEnemy.TYPE[_.random(NamesForEnemy.TYPE.length - 1)];
     const name = NamesForEnemy.NAME[_.random(NamesForEnemy.NAME.length - 1)];
     return adject + ' ' + type + ' ' + name;
-  }
-
-  public getCharacterData(characters: string[], typeCharacter?: string): Promise<Character> {
-    const path = this.getRandomCharacter(characters);
-    return fetch(path)
-      .then(response => response.json())
-      .then((data: Character) => {
-        if (typeCharacter === 'enemy') {
-          data.name = this.getRandomName();
-          return data;
-        }
-        return data;
-      });
   }
 
   getUserCharacter() {
@@ -60,9 +42,9 @@ export class CharacterService {
   getRandomEnemy() {
     let enemy;
     if(this.fight.isFinishLevel()){
-      enemy =  this.getRandomCharacter2(BOSSES);
+      enemy =  this.getRandomCharacter(BOSSES);
     } else {
-      enemy = this.getRandomCharacter2(ENEMIES);
+      enemy = this.getRandomCharacter(ENEMIES);
     }
     enemy.name = this.getRandomName();
     return enemy;
