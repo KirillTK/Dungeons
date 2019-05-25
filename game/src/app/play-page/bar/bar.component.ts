@@ -43,12 +43,10 @@ export class BarComponent implements OnInit, AfterViewInit {
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
 
     this.finishHeroAnimation$.subscribe(()=>{
-        console.log('finish hero attack');
         setTimeout(()=>this.renderHP(),0)
     });
 
     this.finishEnemyAnimation$.subscribe(()=>{
-        console.log('finish enemy attack');
         setTimeout(()=>this.renderHP(),0)
     });
 
