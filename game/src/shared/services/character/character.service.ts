@@ -64,6 +64,7 @@ export class CharacterService {
     } else {
       enemy = this.getRandomCharacter2(ENEMIES);
     }
+    enemy.name = this.getRandomName();
     return enemy;
   }
 
