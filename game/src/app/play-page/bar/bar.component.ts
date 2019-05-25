@@ -66,8 +66,10 @@ export class BarComponent implements OnInit, AfterViewInit {
     this._enemyHealth = this.characterSharedService.getEnemyHealth();
     if (this.fight.isFinishLevel()){
       this.enemyHealth.nativeElement.innerText = this._enemyHealth + ' / 300';  
+      this.calculateHero(this._enemyHealth, this.enemyHP, 300);
     } else {
       this.enemyHealth.nativeElement.innerText = this._enemyHealth + ' / 100';
+      this.calculateHero(this._enemyHealth, this.enemyHP);
     }
     
     this._heroHealth = this.characterSharedService.getHeroHealth();
@@ -77,27 +79,16 @@ export class BarComponent implements OnInit, AfterViewInit {
     this.heroName.nativeElement.innerText = this.characterSharedService.getHeroName();
 
     this.calculateHero(this._heroHealth, this.heroHP);
-    this.calculateHero(this._enemyHealth, this.enemyHP);
-
   }
 
-  calculateHero(health: number, hpElement: ElementRef): void {
+  calculateHero(health: number, hpElement: ElementRef, maxHealth: number = 100): void {
     const characterHealth = health;
-
-    if (characterHealth === 100) {
-      hpElement.nativeElement.style.width = '100%';
-      return;
-    }
     
     if (characterHealth < 0) {
       hpElement.nativeElement.style.width = '0%';
       return;
     }
-
-    if (characterHealth < 100) {
-      hpElement.nativeElement.style.width = characterHealth + '%';
-      return;
-    }
+    hpElement.nativeElement.style.width = (100 * health / maxHealth) + '%';
   }
 
 }
