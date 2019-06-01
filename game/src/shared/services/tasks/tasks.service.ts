@@ -1,11 +1,14 @@
+import { rusToEngDifficult2 } from './../../model/rusToEng';
+import { engToRusDifficult2 } from './../../model/engToRus';
+import { FightService } from './../fight.service';
 import {Injectable} from '@angular/core';
 import {engToRus} from '../../model/engToRus';
 import * as _ from 'lodash';
 import {Task} from '../../model/Task';
 import {rusToEng} from '../../model/rusToEng';
-import {quiz} from "../../model/Quiz";
+import {quiz, quizDifficult2} from "../../model/Quiz";
 import {QuizTask} from "../../model/QuizModel";
-import {dragOrder} from "../../model/DragOrder";
+import {dragOrder, dragOrderDifficult2} from "../../model/DragOrder";
 import {DAMAGE} from "../../model/Damage";
 
 @Injectable({
@@ -14,13 +17,18 @@ import {DAMAGE} from "../../model/Damage";
 export class TasksService {
 
   private mathExpression = ['+', '-', '*'];
+  diffucult = 2;
 
-  constructor() {
+  constructor(private fight: FightService) {
   }
 
   getMathTask(): Task {
-    const firstNumber = _.random(10);
-    const secondNumber = _.random(10);
+    let firstNumber = _.random(10);
+    let secondNumber = _.random(10);
+    if(this.diffucult === 2) {
+      firstNumber = _.random(20);
+      secondNumber = _.random(20);
+    }
     const expressionIndex = _.random(this.mathExpression.length - 1);
     const expression = firstNumber + this.mathExpression[expressionIndex] + secondNumber;
     const result = eval(expression) + '';
@@ -28,29 +36,40 @@ export class TasksService {
   }
 
   getEngToRusTast(): Task {
-    const index = _.random(engToRus.length - 1);
-    return engToRus[index];
+    const task = this.getTaskByDifficult(engToRus, engToRusDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
   }
 
   getRusToEngTast(): Task {
-    const index = _.random(rusToEng.length - 1);
-    return rusToEng[index];
+    const task = this.getTaskByDifficult(rusToEng, rusToEngDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
   }
 
   getCompareTask(): Task {
-    const firstNumber = _.random(30);
-    const secondNumber = _.random(30);
+    let firstNumber = _.random(30);
+    let secondNumber = _.random(30);
+    if(this.diffucult === 2) {
+      firstNumber = _.random(100);
+      secondNumber = _.random(100);
+    }
+  
     const expression  = firstNumber + ' ? '+ secondNumber;
     const result = this.getAnswerCompareTask(firstNumber,secondNumber);
     return {expression: expression, result: result, damage: DAMAGE.COMPARE_TASK};
   }
 
   getQuizTask(): QuizTask{
-    return quiz[_.random(quiz.length-1)];
+    const task = this.getTaskByDifficult(quiz, quizDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
   }
 
   getDragOrderTask(): Task {
-    return dragOrder[_.random(dragOrder.length-1)];
+    const task = this.getTaskByDifficult(dragOrder, dragOrderDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
   }
 
 
@@ -59,5 +78,21 @@ export class TasksService {
       return '=';
     }
     return a > b ? '>' : '<';
+  }
+
+  private getDifficult(): number {
+    return  this.diffucult > 2 ? this.diffucult = 2 : this.diffucult;
+  }
+
+  private getTaskByDifficult(easy, medium) {
+    const difficult = this.getDifficult();
+    switch(difficult) {
+      case 1: 
+        return easy;
+      case 2:
+        return medium;
+      default:
+        return easy;
+    }
   }
 }

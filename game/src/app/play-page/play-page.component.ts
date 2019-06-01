@@ -1,3 +1,4 @@
+import { TasksService } from './../../shared/services/tasks/tasks.service';
 import { FinishGameComponent } from './../../shared/components/finish-game/finish-game.component';
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {MatDialog} from '@angular/material';
@@ -36,7 +37,8 @@ export class PlayPageComponent implements OnInit  {
               private scoreboard: ScoreboardService,
               private characterSharedService: CharacterSharedService,
               public taskDialog: MatDialog,
-              private fight: FightService
+              private fight: FightService,
+              private task: TasksService
   ) {
   }
 
@@ -81,6 +83,7 @@ export class PlayPageComponent implements OnInit  {
           const dialogRef = this.dialog.open(WinGameComponent);
           dialogRef.afterClosed().subscribe( result => {
             if(result) {
+              this.task.diffucult++;
               this.fight.resetLevel();
               this.refreshGame();
             } else {
