@@ -64,14 +64,24 @@ export const ENEMIES = [
 
 
 export const BOSSES = [
+  // {
+  //   "health" : 300,
+  //   "pathCharacter": "./assets/enemy/bosses/bosses1/idl.gif",
+  //   "pathAttack": "./assets/enemy/bosses/bosses1/attack.gif",
+  //   "pathDeath": "./assets/enemy/bosses/bosses1/die.gif",
+  //   "pathHeat": "./assets/enemy/bosses/bosses1/hurt.gif",
+  //   "pathWalkBack": "./assets/enemy/bosses/bosses1/back.gif",
+  //   "pathWalkStraight": "./assets/enemy/bosses/bosses1/run.gif",
+  //   "type": "melee"
+  // }
   {
     "health" : 300,
-    "pathCharacter": "./assets/enemy/bosses/bosses1/idl.gif",
-    "pathAttack": "./assets/enemy/bosses/bosses1/attack.gif",
-    "pathDeath": "./assets/enemy/bosses/bosses1/die.gif",
-    "pathHeat": "./assets/enemy/bosses/bosses1/hurt.gif",
-    "pathWalkBack": "./assets/enemy/bosses/bosses1/back.gif",
-    "pathWalkStraight": "./assets/enemy/bosses/bosses1/run.gif",
+    "pathCharacter": "./assets/enemy/enemy6/idle.gif",
+    "pathAttack": "./assets/enemy/enemy6/attack.gif",
+    "pathDeath": "./assets/enemy/enemy6/die.gif",
+    "pathHeat": "./assets/enemy/enemy6/hurt.gif",
+    "pathWalkBack": "./assets/enemy/enemy6/back.gif",
+    "pathWalkStraight": "./assets/enemy/enemy6/straight.gif",
     "type": "melee"
   }
 ]

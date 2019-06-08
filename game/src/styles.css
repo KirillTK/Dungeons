@@ -31,6 +31,10 @@
     background: transparent;
 }
 
+.info-dialog .mat-dialog-container {
+    padding: 0;
+}
+
 .mat-radio-label-content {
     width: 500px;
     white-space: normal;
