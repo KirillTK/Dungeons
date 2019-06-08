@@ -5,7 +5,7 @@
     height: 650px;
     color: white;
     font-size: 2.5em;
-    background: url('/assets/tasks.png') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO/assets/tasks.png') no-repeat;
     box-shadow: none;
 }
 
@@ -87,7 +87,7 @@
 
 
 .task .submit {
-    background: url('/assets/buttons/ok_button.png') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO/assets/buttons/ok_button.png') no-repeat;
     background-size: 100%;
 }
 

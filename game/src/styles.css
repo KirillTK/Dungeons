@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: DwarvenAxe;
-    src: url("/assets/fonts/DwarvenAxe.ttf") format("truetype");
+    src: url("https://kirilltk.github.io/DungeonIO/assets/fonts/DwarvenAxe.ttf") format("truetype");
 }
 
 * {
     margin: 0 auto;
-    cursor: url('/assets/arrow.png'), auto;
+    cursor: url('https://kirilltk.github.io/DungeonIO/assets/arrow.png'), auto;
 }
 
 .dialog .mat-dialog-container {

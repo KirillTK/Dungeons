@@ -1,7 +1,7 @@
 export const LEVEL = [
-    '/assets/battlefield/1.png',
-    '/assets/battlefield/2.png',
-    '/assets/battlefield/3.png',
-    '/assets/battlefield/4.png',
-    '/assets/battlefield/5.jpg',
+    'https://kirilltk.github.io/DungeonIO/assets/battlefield/1.png',
+    'https://kirilltk.github.io/DungeonIO/assets/battlefield/2.png',
+    'https://kirilltk.github.io/DungeonIO/assets/battlefield/3.png',
+    'https://kirilltk.github.io/DungeonIO/assets/battlefield/4.png',
+    'https://kirilltk.github.io/DungeonIO/assets/battlefield/5.jpg',
 ]
