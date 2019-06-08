@@ -45,10 +45,13 @@
 
 
   <div class="task" *ngIf="typeTask === 'math'">
-    <span class="expression">{{task.expression}}</span>
-    <label>
-      <input type="text" [(ngModel)]="answer" autofocus/>
-    </label>
+
+    <div class="task-container">
+        <span class="expression">{{task.expression}} = ?</span>
+        <label>
+          <input type="text" [(ngModel)]="answer" autofocus/>
+        </label>
+    </div>
 
     <div class="result" *ngIf="showResult">
       <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
@@ -61,11 +64,12 @@
 
 
   <div class="task" *ngIf="typeTask === 'translate'">
+    <div class="task-container">
     <span class="expression">{{task.expression}}</span>
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
-
+  </div>
     <div class="result" *ngIf="showResult">
       <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
         {{task.result}}
@@ -77,11 +81,12 @@
 
 
   <div class="task" *ngIf="typeTask === 'compare'">
-    <span class="expression">{{task.expression}}</span>
+    <div class="task-container">
+    <span class="expression">{{task.expression}} (<, >, =)</span>
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
-
+  </div>
     <div class="result" *ngIf="showResult">
       <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
         {{task.result}}
@@ -94,6 +99,8 @@
 
   <!-- ? -->
   <div class="quiz-are" *ngIf="typeTask === 'quiz'">
+
+    <div class="task-container">
     <span class="expression quiz-task">{{quizTask.expression}}</span>
 
     <mat-radio-group [formControl]="quizControl">
@@ -107,6 +114,7 @@
         {{quizTask.result}}
       </div>
     </div>
+  </div>
 
     <button mat-raised-button color="warn" (click)="closeQuizTask()" style="margin-top: 20px" *ngIf="!showResult">Ok</button>
   </div>
@@ -120,7 +128,6 @@
          (cdkDropListDropped)="dropOrderLetter($event)">
       <div class="letter-box" *ngFor="let letter of dragArray" cdkDrag>{{letter}}</div>
     </div>
-
     <div class="result" *ngIf="showResult">
       <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
         {{task.result}}
