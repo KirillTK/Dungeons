@@ -17,7 +17,7 @@ import {DAMAGE} from "../../model/Damage";
 export class TasksService {
 
   private mathExpression = ['+', '-', '*'];
-  diffucult = 2;
+  diffucult = 1;
 
   constructor(private fight: FightService) {
   }
