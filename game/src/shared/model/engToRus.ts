@@ -107,3 +107,97 @@ export const engToRus: Task[] = [
     damage: DAMAGE.ENG_TO_RUS_TASK
   }
 ];
+
+
+export const engToRusDifficult2: Task[] = [
+  {
+    expression: 'abolish',
+    result: 'отменять',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'addiction',
+    result: 'зависимость',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'anger',
+    result: 'злость',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'learn',
+    result: 'учить',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'change',
+    result: 'менять',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'understand',
+    result: 'понимать',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'follow',
+    result: 'следовать',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'create',
+    result: 'создавать',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'spend',
+    result: 'тратить',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'produce',
+    result: 'производить',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'profit',
+    result: 'выгода',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'addiction',
+    result: 'зависимость',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'referee',
+    result: 'судья',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'whistle',
+    result: 'свистеть',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'valuable',
+    result: 'ценный',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'mirror',
+    result: 'зеркало',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'justice',
+    result: 'справедливость',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  },
+  {
+    expression: 'district',
+    result: 'район',
+    damage: DAMAGE.ENG_TO_RUS_TASK
+  }
+]

@@ -115,7 +115,6 @@ export class HeroComponent implements OnInit {
       spellEffect.style.marginLeft = margin + 'px';
       margin += 1;
     });
-
   }
 
 }

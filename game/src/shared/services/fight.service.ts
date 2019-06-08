@@ -17,7 +17,7 @@ export class FightService {
   finishEnemyAnimation = this._finishEnemyAnimation.asObservable();
   refreshSession$ = this._refreshSession.asObservable();
 
-  private level = 4;
+  private level = 0;
 
   constructor() {
   }
@@ -53,6 +53,7 @@ export class FightService {
   }
 
   isFinishLevel(): boolean {
+    console.log("level2",LEVEL.length - 1, this.level)
       return this.level === LEVEL.length - 1;
   }
 
