@@ -157,8 +157,9 @@ export class PlayPageComponent implements OnInit  {
 
   openInfoDialog() {
     this.dialog.open(InfoDialogComponent, {
-      height: '600px',
-      width: '800px'
+      height: '506px',
+      width: '800px',
+      panelClass: 'info-dialog'
     });
   }
 

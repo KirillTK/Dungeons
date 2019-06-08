@@ -23,9 +23,8 @@ export class CharacterService {
 
   getRandomName(): string {
     const adject = NamesForEnemy.ADJECTIVES[_.random(NamesForEnemy.ADJECTIVES.length - 1)];
-    const type = NamesForEnemy.TYPE[_.random(NamesForEnemy.TYPE.length - 1)];
     const name = NamesForEnemy.NAME[_.random(NamesForEnemy.NAME.length - 1)];
-    return adject + ' ' + type + ' ' + name;
+    return adject + ' '  + name;
   }
 
   getUserCharacter() {
