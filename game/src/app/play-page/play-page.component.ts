@@ -99,8 +99,8 @@ export class PlayPageComponent implements OnInit  {
   }
 
   refreshGame() {
-    this.fight.refreshSession();
     this.fight.nextLevel(this.battlefield);
+    this.fight.refreshSession();
   }
 
   finishGame() {
