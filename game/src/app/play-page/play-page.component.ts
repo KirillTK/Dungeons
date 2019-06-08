@@ -108,7 +108,7 @@ export class PlayPageComponent implements OnInit  {
       name: this.characterSharedService.getHeroName(),
       score: this.score
     }).then();
-
+    this.characterSharedService.clearHeroInfo();
     this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
   }
 
@@ -158,7 +158,7 @@ export class PlayPageComponent implements OnInit  {
   openInfoDialog() {
     this.dialog.open(InfoDialogComponent, {
       height: '506px',
-      width: '800px',
+      width: '900px',
       panelClass: 'info-dialog'
     });
   }

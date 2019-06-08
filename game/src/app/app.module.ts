@@ -1,3 +1,4 @@
+import { AuthGuard } from './../shared/services/auth.service';
 import { WinGameComponent } from './../shared/components/win-game/win-game.component';
 import { InfoDialogComponent } from './../shared/components/info-dialog/info-dialog.component';
 import { FinishGameComponent } from './../shared/components/finish-game/finish-game.component';
@@ -64,7 +65,7 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     ReactiveFormsModule,
     SlideshowModule
   ],
-  providers: [TasksService, CharacterService, ScoreboardService, CharacterSharedService],
+  providers: [TasksService, CharacterService, ScoreboardService, CharacterSharedService, AuthGuard],
   bootstrap: [ApplicationPageComponent],
   entryComponents: [
     DialogComponent,

@@ -50,4 +50,8 @@ export class CharacterSharedService {
     window.localStorage.setItem('userInfo', JSON.stringify(information));
   }
 
+  clearHeroInfo() {
+    window.localStorage.removeItem('userInfo');
+  }
+
 }
