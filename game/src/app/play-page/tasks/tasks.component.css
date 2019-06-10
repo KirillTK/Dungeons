@@ -116,7 +116,8 @@
     flex-direction: column;
     justify-content: space-between;
     width: 500px;
-    height: 355px;
+    height: 440px;
+    margin-top: 30px;
 }
 
 /*=========================*/
@@ -220,4 +221,8 @@
     flex-direction: column;
     min-height: 130px;
     justify-content: space-between;
+}
+
+.visible {
+    visibility: hidden;
 }
