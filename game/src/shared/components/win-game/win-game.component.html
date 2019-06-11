@@ -1,8 +1,8 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>Поздравляю храбрый герой, ты победил!</h1>
 <div mat-dialog-content>
-  <p>Do you want to finish game?</p>
+  <p>Вы побелили {{data.countEnemies}} и набрали {{data.result}} очков</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="false">FinishGame</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Continue</button>
+  <button mat-button [mat-dialog-close]="false">Закончить игру</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Продолжить</button>
 </div>

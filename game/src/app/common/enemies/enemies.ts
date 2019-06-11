@@ -65,7 +65,7 @@ export const BOSSES = [
   //   "type": "melee"
   // }
   {
-    "health" : 100,
+    "health" : 300,
     "pathCharacter": "./assets/enemy/enemy4/idle.gif",
     "pathAttack": "./assets/enemy/enemy4/attack.gif",
     "pathDeath": "./assets/enemy/enemy4/die.gif",

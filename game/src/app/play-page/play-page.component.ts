@@ -80,11 +80,10 @@ export class PlayPageComponent implements OnInit  {
       setTimeout(() => {
         this.amoutOfEnemies++;
         if(this.fight.isFinishLevel()) {
-          const dialogRef = this.dialog.open(WinGameComponent);
+          const dialogRef = this.dialog.open(WinGameComponent, {data: { result: this.score, countEnemies: this.amoutOfEnemies}});
           dialogRef.afterClosed().subscribe( result => {
             if(result) {
               this.task.diffucult++;
-              this.fight.resetLevel();
               this.refreshGame();
             } else {
               this.finishGame();
@@ -149,7 +148,9 @@ export class PlayPageComponent implements OnInit  {
   }
 
   onFinishGame() {
-    const dialogRef = this.dialog.open(FinishGameComponent, {data: this.characterSharedService.getHeroName()});
+    const dialogRef = this.dialog.open(FinishGameComponent, {    
+      width: '240px',
+      data: this.characterSharedService.getHeroName()});
     dialogRef.afterClosed().subscribe( result=> {
       if(result) {
         this.finishGame();
