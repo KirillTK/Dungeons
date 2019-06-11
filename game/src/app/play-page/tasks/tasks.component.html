@@ -4,14 +4,14 @@
     <!--<div class="button-task-container" (click)="onMathTask()">-->
       <!--<button class="button math_task"></button>-->
       <!--<span class="name-task">Math</span></div>-->
-    <button mat-raised-button color="warn" (click)="onMathTask()" class="task_btn">Math</button>
+    <button mat-raised-button color="warn" (click)="onMathTask()" class="task_btn">Математика</button>
 
 
     <!--<div class="button-task-container" (click)="onEngToRusTask()">-->
       <!--<button class="button engToRus"></button>-->
       <!--<span class="name-task">Eng to Rus</span></div>-->
 
-    <button mat-raised-button  class="task_btn" (click)="onEngToRusTask()">Eng to Rus</button>
+    <button mat-raised-button  class="task_btn" (click)="onEngToRusTask()">Англ в Рус</button>
 
 
 
@@ -19,27 +19,31 @@
       <!--<button class="button rusToEng"></button>-->
       <!--<span class="name-task">Rus to Eng</span></div>-->
 
-    <button mat-raised-button color="warn" (click)="onRusToEngTask()" class="task_btn">Rus to Eng</button>
+    <button mat-raised-button color="warn" (click)="onRusToEngTask()" class="task_btn">Рус в Англ</button>
+
+    <button mat-raised-button (click)="onGeography()" class="task_btn">География</button>
 
 
     <!--<div class="button-task-container" (click)="onCompare()">-->
       <!--<button class="button compare"></button>-->
       <!--<span class="name-task">Compare</span></div>-->
 
-    <button mat-raised-button  class="task_btn" (click)="onCompare()">Compare</button>
+    <button mat-raised-button  color="warn"  class="task_btn" (click)="onCompare()">Сравнение</button>
+
+    <button mat-raised-button  class="task_btn" (click)="onTrueFalse()">Правда или Ложь</button>
 
 
     <!--<div class="button-task-container" (click)="onQuiz()">-->
       <!--<button class="button quiz"></button>-->
       <!--<span class="name-task">Quiz</span></div>-->
 
-    <button mat-raised-button color="warn" (click)="onQuiz()" class="task_btn">Quiz</button>
+    <button mat-raised-button color="warn" (click)="onQuiz()" class="task_btn">Викторина</button>
 
     <!--<div class="button-task-container" (click)="onRightOrder()">-->
       <!--<button class="button drag"></button>-->
       <!--<span class="name-task">Right order</span></div>-->
 
-    <button mat-raised-button  class="task_btn" (click)="onRightOrder()">Right order</button>
+    <button mat-raised-button  class="task_btn" (click)="onRightOrder()">Порядок</button>
 
   </div>
 
@@ -136,6 +140,45 @@
 
     <button mat-raised-button color="warn" (click)="closeDragResult()"*ngIf="!showResult">Ok</button>
   </div>
+
+
+  <div class="task" *ngIf="typeTask === 'geography'">
+
+    <div class="task-container">
+        <span class="expression">Столица {{task.expression}}</span>
+        <label>
+          <input type="text" [(ngModel)]="answer" autofocus/>
+        </label>
+    </div>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}" style="text-transform: capitalize">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" type="submit" (click)="close()" *ngIf="!showResult">Ok</button>
+  </div>
+
+  <div class="task" *ngIf="typeTask === 'trueFalse'">
+
+    <div class="task-container">
+        <span class="expression" style="font-size: 1.5rem;text-align: center">{{task.expression}} (true/false)</span>
+        <label>
+          <input type="text" [(ngModel)]="answer" autofocus/>
+        </label>
+    </div>
+
+    <div class="result" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+        {{task.result}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" type="submit" (click)="close()" *ngIf="!showResult">Ok</button>
+  </div>
+
+
 
   <button mat-icon-button (click)="closeDialog()" class="hide_btn" style="width: 50px; height: 50px">
     <mat-icon aria-label="hide dialog" style="font-size: 3em; width: 50px;" [ngClass]="{visible: showResult }">cancel</mat-icon>

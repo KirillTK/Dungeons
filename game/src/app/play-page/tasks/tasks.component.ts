@@ -92,6 +92,15 @@ export class TasksComponent implements OnInit {
     this.typeTask = 'quiz';
   }
 
+  onGeography() {
+    this.task = this.tasks.getGeographyTask();
+    this.typeTask = 'geography';
+  }
+
+  onTrueFalse() {
+    this.task = this.tasks.getTrueFalseTask();
+    this.typeTask = 'trueFalse';
+  }
 
   onRightOrder(){
     this.task = this.tasks.getDragOrderTask();

@@ -1,3 +1,5 @@
+import { geography, geographyDifficult2 } from './../../model/Geography';
+import { true_false, true_falseDifficult2 } from './../../model/True_False';
 import { rusToEngDifficult2 } from './../../model/rusToEng';
 import { engToRusDifficult2 } from './../../model/engToRus';
 import { FightService } from './../fight.service';
@@ -68,6 +70,18 @@ export class TasksService {
 
   getDragOrderTask(): Task {
     const task = this.getTaskByDifficult(dragOrder, dragOrderDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
+  }
+
+  getGeographyTask(): Task {
+    const task = this.getTaskByDifficult(geography, geographyDifficult2);
+    const index = _.random(task.length - 1);
+    return task[index];
+  }
+
+  getTrueFalseTask(): Task {
+    const task = this.getTaskByDifficult(true_false, true_falseDifficult2);
     const index = _.random(task.length - 1);
     return task[index];
   }
