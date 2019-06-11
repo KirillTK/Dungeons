@@ -110,6 +110,7 @@ export class PlayPageComponent implements OnInit  {
     }).then();
     this.characterSharedService.clearHeroInfo();
     this.openDialog({result: this.score, countEnemies: this.amoutOfEnemies});
+    this.fight.resetLevel();
   }
 
   openTaskDialog() {
@@ -134,6 +135,7 @@ export class PlayPageComponent implements OnInit  {
       });
 
       dialogRef.afterClosed().subscribe(result => {
+        this.characterSharedService.clearHeroInfo();
         this.route.navigate(['/']);
       });
     });

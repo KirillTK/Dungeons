@@ -31,7 +31,7 @@ export class CharacterService {
     const userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
     this.sharedService.setHeroName(userInfo.nickName);
     const {name} = userInfo.selectedHero.selectedCharacter;
-    return HEROES[name];
+    return Object.assign({},HEROES[name]);
   }
 
   getUserInfo() {
