@@ -140,5 +140,50 @@ export const geographyDifficult2: Task[] = [
     expression: 'Турции',
     result: 'анкара',
     damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Греция',
+    result: 'афины',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Грузия',
+    result: 'тбилиси',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Дания',
+    result: 'копенгаген',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Доминикана',
+    result: 'санто-доминго	',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Египет',
+    result: 'каир',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Израиль',
+    result: 'иерусалим',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Италия',
+    result: 'рим',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Либерия',
+    result: 'монровия',
+    damage: DAMAGE.GEOGRAPHY
+  },
+  {
+    expression: 'Россия',
+    result: 'москва',
+    damage: DAMAGE.GEOGRAPHY
   }
 ]

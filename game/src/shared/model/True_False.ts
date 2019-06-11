@@ -60,6 +60,56 @@ export const true_false: Task[] = [
         expression: 'В чилийском городе не было дождя 40 лет.',
         result: 'true',
         damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'Счастливая монета Скруджа была достоинством в 10 центов?',
+        result: 'true',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'Радугу можно увидеть и в полночь?',
+        result: 'true',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'астоящее имя Ганса Христиана Андерсена было Свенсен?',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'Рост Конька — Горбунка составляет два вершка',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'В Японии ученики на доске пишут кисточкой с цветными чернилами?',
+        result: 'true',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'В Австралии практикуется применение одноразовых школьных досок?',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'Авторучка была изобретена еще в Древнем Египте?',
+        result: 'true',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'В некоторые виды цветных карандашей добавляется экстракт моркови для большей прочности грифеля?',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'Римляне носили штаны?',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
+      },
+      {
+        expression: 'На зиму пингвины улетают на север? ',
+        result: 'false',
+        damage: DAMAGE.TRUE_FALSE
       }
 ]
 
@@ -114,5 +164,51 @@ export const true_falseDifficult2: Task[] = [
         expression: 'Страусы прячут голову в песок.',
         result: 'false',
         damage: DAMAGE.TRUE_FALSE
+    },
+
+    {
+      expression: 'Если пчела ужалит кого-либо, то она погибнет?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Правда ли что, пауки питаются собственной паутиной?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'В одном корейском цирке двух крокодилов научили танцевать вальс. ',
+      result: 'false',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Спартанские воины перед битвой опрыскивали волосы духами.',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Мыши подрастая становятся крысами?',
+      result: 'false',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Некоторые лягушки умеют летать?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Дети могут слышать более высокие звуки, чем взрослые?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Глаз наполнен воздухом?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
+    },
+    {
+      expression: 'Совы не могут вращать глазами?',
+      result: 'true',
+      damage: DAMAGE.TRUE_FALSE
     }
 ]
