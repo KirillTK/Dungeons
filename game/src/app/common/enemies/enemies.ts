@@ -31,16 +31,6 @@ export const ENEMIES = [
       },
       {
         "health" : 100,
-        "pathCharacter": "./assets/enemy/enemy4/idle.gif",
-        "pathAttack": "./assets/enemy/enemy4/attack.gif",
-        "pathDeath": "./assets/enemy/enemy4/die.gif",
-        "pathHeat": "./assets/enemy/enemy4/hurt.gif",
-        "pathWalkBack": "./assets/enemy/enemy4/back.gif",
-        "pathWalkStraight": "./assets/enemy/enemy4/straight.gif",
-        "type": "melee"
-      },
-      {
-        "health" : 100,
         "pathCharacter": "./assets/enemy/enemy5/idle.gif",
         "pathAttack": "./assets/enemy/enemy5/attack.gif",
         "pathDeath": "./assets/enemy/enemy5/die.gif",
@@ -75,13 +65,13 @@ export const BOSSES = [
   //   "type": "melee"
   // }
   {
-    "health" : 300,
-    "pathCharacter": "./assets/enemy/enemy6/idle.gif",
-    "pathAttack": "./assets/enemy/enemy6/attack.gif",
-    "pathDeath": "./assets/enemy/enemy6/die.gif",
-    "pathHeat": "./assets/enemy/enemy6/hurt.gif",
-    "pathWalkBack": "./assets/enemy/enemy6/back.gif",
-    "pathWalkStraight": "./assets/enemy/enemy6/straight.gif",
+    "health" : 100,
+    "pathCharacter": "./assets/enemy/enemy4/idle.gif",
+    "pathAttack": "./assets/enemy/enemy4/attack.gif",
+    "pathDeath": "./assets/enemy/enemy4/die.gif",
+    "pathHeat": "./assets/enemy/enemy4/hurt.gif",
+    "pathWalkBack": "./assets/enemy/enemy4/back.gif",
+    "pathWalkStraight": "./assets/enemy/enemy4/straight.gif",
     "type": "melee"
   }
 ]
