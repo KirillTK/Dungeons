@@ -1,8 +1,8 @@
 <section class="lose-dialog" (keydown.enter)="close()">
 
-  <h1 mat-dialog-title>You Lose (</h1>
+  <h1 mat-dialog-title>Вы проиграли (</h1>
   <div mat-dialog-content class="statistics">
-    <p>Statistics : your score {{data.result}} and you won {{data.countEnemies}} enemies</p>
+    <p>Статистика : вы набрали {{data.result}} очков <br> и вы победили {{data.countEnemies}} врагов</p>
   </div>
 
   <app-score-table></app-score-table>

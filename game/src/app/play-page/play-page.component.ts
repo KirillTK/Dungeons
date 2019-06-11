@@ -80,8 +80,9 @@ export class PlayPageComponent implements OnInit  {
       setTimeout(() => {
         this.amoutOfEnemies++;
         if(this.fight.isFinishLevel()) {
-          const dialogRef = this.dialog.open(WinGameComponent, {data: { result: this.score, countEnemies: this.amoutOfEnemies}});
-          dialogRef.afterClosed().subscribe( result => {
+          const dialogRef = this.dialog.open(WinGameComponent,
+             {disableClose: true, data: { result: this.score, countEnemies: this.amoutOfEnemies}});
+              dialogRef.afterClosed().subscribe( result => {
             if(result) {
               this.task.diffucult++;
               this.refreshGame();

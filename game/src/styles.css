@@ -2,13 +2,17 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @font-face {
-    font-family: DwarvenAxe;
-    src: url("/assets/fonts/DwarvenAxe.ttf") format("truetype");
+    font-family: "Lato";
+    src: url("/assets/fonts/Lato.ttf") format("truetype");
 }
 
 * {
     margin: 0 auto;
     cursor: url('/assets/arrow.png'), auto;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
 }
 
 .dialog .mat-dialog-container {

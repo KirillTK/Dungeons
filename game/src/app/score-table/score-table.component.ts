@@ -19,7 +19,7 @@ export class ScoreTableComponent implements OnInit {
   ngOnInit() {
     this.scoreboard.getScoreboard()
       .subscribe(users => {
-        this.players = users;
+        this.players = users.sort( (a,b) => b.score - a.score);
         this.isLoaded = true;
       });
   }

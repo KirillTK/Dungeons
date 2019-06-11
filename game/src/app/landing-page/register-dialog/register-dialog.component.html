@@ -1,13 +1,13 @@
 <section class="dialog">
 
   <div class="container">
-    <span class="title">Hello brave adventurer!</span>
+    <span class="title">Привет храбрый путник!</span>
     <form (submit)="submit()">
       <mat-form-field>
         <input matInput placeholder="Nickname" [formControl]="nickNameFormControl"
                [errorStateMatcher]="matcher" [(ngModel)]="nickName" maxlength="13">
         <mat-error *ngIf="nickNameFormControl.hasError('required')">
-          Nickname is <strong>required</strong>
+          Обязятельное <strong>поле</strong>
         </mat-error>
         <mat-error *ngIf="nickNameFormControl.hasError('minlength')">
           Min length <strong>3</strong>
