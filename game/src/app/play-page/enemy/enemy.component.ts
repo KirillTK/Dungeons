@@ -71,6 +71,12 @@ export class EnemyComponent implements OnInit {
 
   animateAttack() {
     this.enemyElement.nativeElement.src = this.enemy.pathAttack;
+
+    this.enemyElement.nativeElement.onload = () => {
+      console.log()
+    }
+
+
     setTimeout(() => {
     const healthHero = this.characterSharedService.getHeroHealth();
     if (healthHero !== 0){
@@ -78,11 +84,14 @@ export class EnemyComponent implements OnInit {
     }
       this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
       this.goBack();
-    }, 1000); 
+    }, 1000);
   }
 
   goBack(){
     this.enemyElement.nativeElement.src = this.enemy.pathWalkBack;
+
+
+    // this.enemyElement.nativeElement.onloaded =
     const diff = 0;
     let margin = 500;
 

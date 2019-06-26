@@ -32,6 +32,7 @@ import 'hammerjs';
 import {SlideshowModule} from "ng-simple-slideshow";
 import {CharacterSharedService} from "../shared/services/character-shared.service";
 import {MusicSettingsComponent} from '../shared/components/music-settings-dialog/music-settings-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {MusicSettingsComponent} from '../shared/components/music-settings-dialog
     AngularFirestoreModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    SlideshowModule
+    SlideshowModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [TasksService, CharacterService, ScoreboardService, CharacterSharedService, AuthGuard],
   bootstrap: [ApplicationPageComponent],

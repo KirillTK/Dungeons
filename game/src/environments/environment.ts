@@ -5,7 +5,7 @@
 const API_URL = process.env.API_URL;
 
 export const environment = {
-  production: false,
+  production: true,
   firebase : {
     apiKey: "AIzaSyCQT5guyAxftXF0yMRUbiFSKzri7PcFWPo",
     authDomain: "dungeons-a0a52.firebaseapp.com",

@@ -3,7 +3,7 @@
     align-items: flex-end;
     width: 100vw;
     height: 100vh;
-    background: url('/assets/main_menu.jpg') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/main_menu.jpg') no-repeat;
     background-size: cover;
 }
 
@@ -24,13 +24,13 @@
 }
 
 .auth {
-    background: url('/assets/buttons/author_button.jpg') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/buttons/author_button.jpg') no-repeat;
 }
 
 .play {
-    background: url('/assets/buttons/play_button.jpg') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/buttons/play_button.jpg') no-repeat;
 }
 
 .screen {
-    background: url('/assets/buttons/screen_button.jpg') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/buttons/screen_button.jpg') no-repeat;
 }
