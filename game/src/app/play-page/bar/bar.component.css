@@ -16,7 +16,7 @@ section.health-bar {
 .bar {
     width: 500px;
     height: 150px;
-    background: url('/assets/health-bar/HealthBar.png') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/health-bar/HealthBar.png') no-repeat;
     background-size: cover;
 }
 
@@ -35,13 +35,13 @@ section.health-bar {
 
 .hero-bar {
     height: 60px;
-    background: url('/assets/health-bar/hp.png') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/health-bar/hp.png') no-repeat;
     background-size: cover;
 }
 
 .enemy-bar {
     height: 60px;
-    background: url('/assets/health-bar/hp.png') no-repeat;
+    background: url('https://kirilltk.github.io/DungeonIO1/assets/health-bar/hp.png') no-repeat;
     background-size: cover;
 }
 

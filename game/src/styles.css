@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: "Lato";
-    src: url("/assets/fonts/Lato.ttf") format("truetype");
+    src: url("https://kirilltk.github.io/DungeonIO1/assets/fonts/Lato.ttf") format("truetype");
 }
 
 * {
     margin: 0 auto;
-    cursor: url('/assets/arrow.png'), auto;
+    cursor: url('https://kirilltk.github.io/DungeonIO1/assets/arrow.png'), auto;
 }
 
 body {
