@@ -154,7 +154,7 @@ export class TasksComponent implements OnInit {
     const result = this.getDragResult();
     this.isCurrect = result.result === 'Correct';
     this.showResult = true;
-    setTimeout( ()=> this.dialogRef.close(result), 2000);
+    // setTimeout( ()=> this.dialogRef.close(result), 2000);
   }
 
 

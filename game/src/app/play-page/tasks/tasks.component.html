@@ -68,12 +68,16 @@
 
 
   <div class="task" *ngIf="typeTask === 'translate'">
+
+
     <div class="task-container">
     <span class="expression">{{task.expression}}</span>
     <label>
       <input type="text" [(ngModel)]="answer" autofocus/>
     </label>
   </div>
+
+
     <div class="result" *ngIf="showResult">
       <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
         {{task.result}}
@@ -132,13 +136,13 @@
          (cdkDropListDropped)="dropOrderLetter($event)">
       <div class="letter-box" *ngFor="let letter of dragArray" cdkDrag>{{letter}}</div>
     </div>
-    <div class="result" *ngIf="showResult">
-      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+    <div class="" *ngIf="showResult">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}" style="padding: .6rem 1.2rem;">
         {{task.result}}
       </div>
     </div>
 
-    <button mat-raised-button color="warn" (click)="closeDragResult()"*ngIf="!showResult">Ok</button>
+    <button mat-raised-button color="warn" (click)="closeDragResult()"*ngIf="!showResult" style="margin-top: 22px;">Ok</button>
   </div>
 
 
