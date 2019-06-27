@@ -65,7 +65,8 @@ export class PlayPageComponent implements OnInit  {
   }
 
   setScore() {
-    return this.answer.result === 'Correct' ? this.score += 100 : this.score -= 50;
+    const points = this.answer.damage;
+    return this.answer.result === 'Correct' ? this.score += points : this.score -= points;
   }
 
 
