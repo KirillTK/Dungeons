@@ -72,7 +72,7 @@ export const true_false: Task[] = [
         damage: DAMAGE.TRUE_FALSE
       },
       {
-        expression: 'астоящее имя Ганса Христиана Андерсена было Свенсен?',
+        expression: 'Настоящее имя Ганса Христиана Андерсена было Свенсен?',
         result: 'false',
         damage: DAMAGE.TRUE_FALSE
       },

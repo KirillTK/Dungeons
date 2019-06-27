@@ -114,7 +114,7 @@
     </mat-radio-group>
 
     <div class="result" *ngIf="showResult">
-      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}">
+      <div class="alert right-answer" [ngClass]="{'right-answer': isCurrect, 'wrong-answer': !isCurrect}" style="font-size: 1.4rem">
         {{quizTask.result}}
       </div>
     </div>
