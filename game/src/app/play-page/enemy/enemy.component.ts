@@ -1,23 +1,34 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {Character} from '../../../shared/model/character';
 import {Path} from '../../../shared/model/Path';
 import {CharacterService} from '../../../shared/services/character/character.service';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
 import {FightService} from "../../../shared/services/fight.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-enemy',
   templateUrl: './enemy.component.html',
   styleUrls: ['./enemy.component.css']
 })
-export class EnemyComponent implements OnInit {
+export class EnemyComponent implements OnInit, OnDestroy {
 
   public enemy: Character;
 
   @Output() gameResult = new EventEmitter<string>();
   @ViewChild('enemy') enemyElement: ElementRef;
-
+  private subscriptions : Subscription[] = [];
   fight$: Observable<any>;
   finishHeroAnimation$: Observable<any>;
   refreshSession$: Observable<any>;
@@ -35,22 +46,22 @@ export class EnemyComponent implements OnInit {
     this.finishHeroAnimation$ = this.fight.finishHeroAnimation;
     this.refreshSession$ = this.fight.refreshSession$;
 
-    this.fight$.subscribe( (result)=>{
+    this.subscriptions.push(this.fight$.subscribe( (result)=>{
 
       this.damageSpell = result.damage;
 
       if (result.result === 'Incorrect'){
         this.attack();
       }
-    });
+    }));
 
-    this.finishHeroAnimation$.subscribe( ()=>{
+    this.subscriptions.push(this.finishHeroAnimation$.subscribe( ()=>{
       this.reduceHealth(this.damageSpell);
-    });
+    }));
 
-    this.refreshSession$.subscribe(()=>{
+    this.subscriptions.push(this.refreshSession$.subscribe(()=>{
       this.setEnemy();
-    })
+    }))
 
   }
 
@@ -124,10 +135,17 @@ export class EnemyComponent implements OnInit {
     }, 1000);
   }
 
+  imgLoaded(imgElement) {
+    return imgElement.complete && imgElement.naturalHeight !== 0;
+  }
+
   reduceHealth(amountHealth) {
     if (this.enemy.health - amountHealth <= 0) {
       this.die();
-      this.gameResult.emit('win');
+      setTimeout(()=> {
+        this.gameResult.emit('win');
+        this.enemyElement.nativeElement.style.display = 'none';
+      }, 1500);
     } else {
       this.hurt();
     }
@@ -136,7 +154,11 @@ export class EnemyComponent implements OnInit {
   }
 
   setState() {
+    this.enemyElement.nativeElement.style.display = 'block';
     this.enemyElement.nativeElement.src = this.enemy.pathCharacter;
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 }

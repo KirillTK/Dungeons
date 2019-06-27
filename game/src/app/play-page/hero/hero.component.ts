@@ -2,7 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Input,
+  Input, OnDestroy,
   OnInit,
   Output,
   ViewChild
@@ -11,7 +11,7 @@ import {CharacterService} from '../../../shared/services/character/character.ser
 import {Character} from '../../../shared/model/character';
 import {CharacterSharedService} from '../../../shared/services/character-shared.service';
 import {SoundService} from '../../../shared/services/sound/sound.service';
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {FightService} from "../../../shared/services/fight.service";
 
 @Component({
@@ -19,8 +19,9 @@ import {FightService} from "../../../shared/services/fight.service";
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent implements OnInit, OnDestroy {
 
+  private subscriptions : Subscription[] = [];
   public hero: Character;
   private castPath: string;
   @Output() gameResult = new EventEmitter<string>();
@@ -41,21 +42,23 @@ export class HeroComponent implements OnInit {
     this.fight$ = this.fight.gameResult;
     this.finishEnemyAnimation$ = this.fight.finishEnemyAnimation;
 
-    this.fight$.subscribe((result) => {
+    this.subscriptions.push(
+      this.fight$.subscribe((result) => {
 
-      this.damageSpell = result.damage;
+        this.damageSpell = result.damage;
 
-      if (result.result === 'Correct') {
-        const spellSound = result.castSound;
-        this.castPath = result.castPath;
-        this.attack(spellSound);
-      }
+        if (result.result === 'Correct') {
+          const spellSound = result.castSound;
+          this.castPath = result.castPath;
+          this.attack(spellSound);
+        }
 
-    });
+      })
+    );
 
-    this.finishEnemyAnimation$.subscribe( ()=>{
+    this.subscriptions.push(this.finishEnemyAnimation$.subscribe( ()=>{
       this.reduceHealth(this.damageSpell);
-    });
+    }));
   }
 
   attack(spellSound: string) {
@@ -115,6 +118,10 @@ export class HeroComponent implements OnInit {
       spellEffect.style.marginLeft = margin + 'px';
       margin += 1;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }
