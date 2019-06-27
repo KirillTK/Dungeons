@@ -27,38 +27,6 @@ export class TasksComponent implements OnInit {
 
   quizControl = new FormControl(null, [Validators.required]);
 
-
-
-  // @HostListener('document:keypress',['$event']) doSmth(event: KeyboardEvent){
-
-  //   if (this.typeTask === ''){
-  //     if (event.keyCode === this.keyControl.DIGIT_ONE) {
-  //       this.onMathTask();
-  //     }
-
-  //     if (event.keyCode === this.keyControl.DIGIT_TWO) {
-  //       this.onEngToRusTask();
-  //     }
-
-  //     if (event.keyCode === this.keyControl.DIGIT_THREE) {
-  //       this.onRusToEngTask();
-  //     }
-
-  //     if (event.keyCode === this.keyControl.DIGIT_FOUR) {
-  //       this.onCompare();
-  //     }
-
-  //     if (event.keyCode === this.keyControl.DIGIT_FIVE) {
-  //       this.onQuiz();
-  //     }
-
-  //     if (event.keyCode === this.keyControl.DIGIT_SIX) {
-  //       this.onRightOrder();
-  //     }
-  //   }
-
-  // }
-
   constructor(private tasks: TasksService, public dialogRef: MatDialogRef<TasksComponent>) {
   }
 
@@ -160,6 +128,23 @@ export class TasksComponent implements OnInit {
 
   dropOrderLetter(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.dragArray, event.previousIndex, event.currentIndex);
+  }
+
+  closeTranslateTask() {
+    console.log('res', this.answer, this.getTranslateResult());
+    this.closeTranslateResult();
+  }
+
+  getTranslateResult() {
+    const result = Array.from(this.task.result).filter( e => e === this.answer.toLowerCase()).length;
+    return this.parseResult(result !== 0, this.task);
+  }
+
+  closeTranslateResult() {
+    const result = this.getTranslateResult();
+    this.isCurrect = result.result === 'Correct';
+    this.showResult = true;
+    setTimeout( ()=> this.dialogRef.close(result), 2000);
   }
 
   closeDialog(){

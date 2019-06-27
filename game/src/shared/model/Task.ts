@@ -1,5 +1,5 @@
 export interface Task {
   expression: string;
-  result: string;
+  result: string | string[];
   damage: number;
 }

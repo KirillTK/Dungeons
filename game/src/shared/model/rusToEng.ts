@@ -3,106 +3,106 @@ import {DAMAGE} from "./Damage";
 
 export const rusToEng: Task[] = [
   {
-    result: 'cat',
+    result: ['cat'],
     expression: 'кот',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'dog',
+    result: ['dog'],
     expression: 'собака',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'air',
+    result: ['air', 'atmosphere'],
     expression: 'воздух',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'animal',
+    result: ['animal'],
     expression: 'животное',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'area',
+    result: ['area', 'region'],
     expression: 'область',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'bird',
+    result: ['bird', 'fowl'],
     expression: 'птица',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'body',
+    result: ['body'],
     expression: 'тело',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'book',
+    result: ['book'],
     expression: 'книга',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'boy',
+    result: ['boy', 'lad'],
     expression: 'мальчик',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'example',
+    result: ['example'],
     expression: 'пример',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'girl',
+    result: ['girl'],
     expression: 'девочка',
     damage: DAMAGE.RUS_TO_ENG_TASK
   }, {
-    result: 'home',
+    result: ['home'],
     expression: 'дом',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'king',
+    result: ['king'],
     expression: 'король',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'money',
+    result: ['money'],
     expression: 'деньги',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'problem',
+    result: ['problem'],
     expression: 'проблема',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'product',
+    result: ['product'],
     expression: 'продукт',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'tree',
+    result: ['tree', 'wood'],
     expression: 'дерево',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'year',
+    result: ['year'],
     expression: 'год',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'world',
+    result: ['world'],
     expression: 'мир',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'wood',
+    result: ['wood', 'forest'],
     expression: 'лес',
     damage: DAMAGE.RUS_TO_ENG_TASK
   },
   {
-    result: 'class',
+    result: ['class'],
     expression: 'класс',
     damage: DAMAGE.RUS_TO_ENG_TASK
   }
@@ -110,92 +110,87 @@ export const rusToEng: Task[] = [
 
 export const rusToEngDifficult2: Task[] = [
   {
-    result: 'abolish',
+    result: ['abolish', 'cancel'],
     expression: 'отменять',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'addiction',
+    result: ['addiction'],
     expression: 'зависимость',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'anger',
+    result: ['anger', 'spite'],
     expression: 'злость',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'learn',
+    result: ['learn'],
     expression: 'учить',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'change',
+    result: ['change'],
     expression: 'менять',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'understand',
+    result: ['understand'],
     expression: 'понимать',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'follow',
+    result: ['follow'],
     expression: 'следовать',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'create',
+    result: ['create'],
     expression: 'создавать',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'spend',
+    result: ['spend'],
     expression: 'тратить',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'produce',
+    result: ['produce'],
     expression: 'производить',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'profit',
+    result: ['profit'],
     expression: 'выгода',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'addiction',
-    expression: 'зависимость',
-    damage: DAMAGE.ENG_TO_RUS_TASK
-  },
-  {
-    result: 'referee',
+    result: ['referee', 'judge'],
     expression: 'судья',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'whistle',
+    result: ['whistle', 'whish'],
     expression: 'свистеть',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'valuable',
+    result: ['valuable'],
     expression: 'ценный',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'mirror',
+    result: ['mirror'],
     expression: 'зеркало',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'justice',
+    result: ['justice'],
     expression: 'справедливость',
     damage: DAMAGE.ENG_TO_RUS_TASK
   },
   {
-    result: 'district',
+    result: ['district'],
     expression: 'район',
     damage: DAMAGE.ENG_TO_RUS_TASK
   }

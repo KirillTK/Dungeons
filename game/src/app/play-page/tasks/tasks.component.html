@@ -1,4 +1,4 @@
-<div class="task-dialog" (keydown.enter)="close()">
+<div class="task-dialog">
 
   <div class="table-tasks" *ngIf="typeTask === ''">
     <!--<div class="button-task-container" (click)="onMathTask()">-->
@@ -80,7 +80,7 @@
       </div>
     </div>
 
-    <button mat-raised-button color="warn" (click)="close()" *ngIf="!showResult">Ok</button>
+    <button mat-raised-button color="warn" (click)="closeTranslateTask()" *ngIf="!showResult">Ok</button>
   </div>
 
 
